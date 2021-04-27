@@ -16,6 +16,14 @@ import retrofit2.http.Query;
 
 public interface Retro {
 
+    //gets a name, the correct year, and 4 other random years
+    @GET("getOneNameMultipleYears")
+    Call<JsonObject> getOneNameMultipleYears();
+
+    //gets a year, the correct name, and 4 other random names
+    @GET("getOneYearMultipleNames")
+    Call<JsonObject> getOneYearMultipleNames();
+
     /*
     Example from TechPrep
      */
