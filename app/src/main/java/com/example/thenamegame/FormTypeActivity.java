@@ -10,4 +10,5 @@ public class FormType extends AppCompatActivity {
     //I think there should be 2 buttons (or a slider?) for which Form a user wants to do,
     //in addition this should let the user select how many stars, and if the nameGame is multiplayer
 
+
 }
