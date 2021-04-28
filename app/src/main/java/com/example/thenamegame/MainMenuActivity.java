@@ -8,6 +8,7 @@ import android.view.View;
 
 public class MainMenuActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +20,7 @@ public class MainMenuActivity extends AppCompatActivity {
      * @author Ian Olds
      */
     public void switchToFormType(View view){
-        Intent intent = new Intent(this, FormType.class);
+        Intent intent = new Intent(this, FormTypeActivity.class);
         startActivity(intent);
     }
 
