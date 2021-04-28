@@ -1,10 +1,14 @@
 package com.example.thenamegame;
 
+import android.content.Context;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,22 +44,33 @@ public class QuestionHandler {
     }
 
 
+    private void fillLists(JsonObject obj){
+            String q = obj.get("question").getAsString();
+            String a = obj.get("answer").getAsString();
+            System.out.println(q);
+            questions.add(q);
+            answers.add(a);
+    }
+
    private void populateFields(){
-       Call<JsonArray> call = interfaceName.getOneNameMultipleYears();
-       call.enqueue(new Callback<JsonArray>() {
-           @Override
-           public void onResponse(Call<JsonArray> call, Response<JsonArray> response) {
-               Log.d("GETALL", response.body().toString());
-               System.out.println(response.body().toString());
-           } //ends overiddden method
+        for(int i = 0; i<10; i++) {
+            Call<JsonObject> call = interfaceName.getOneNameMultipleYears();
+            call.enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    Log.d("GETALL", response.body().toString());
+                    //System.out.println(response.body().toString());
+                    fillLists(response.body());
+                } //ends overiddden method
 
-           @Override
-           public void onFailure(Call<JsonArray> call, Throwable t) {
-               Log.d("GETALL", "FAILED     " + t.toString());
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Log.d("GETALL", "FAILED     " + t.toString());
 
-           }
+                }
 
-       });   //end enqeue
+            });   //end enqeue
+        }
    }
 
     public void startQuestions(){currQ =1; }
