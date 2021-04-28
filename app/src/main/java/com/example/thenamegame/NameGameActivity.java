@@ -37,9 +37,9 @@ public class NameGameActivity extends AppCompatActivity {
         questionText.setText(questionHandler.getQuestion());
 
         List<String> allAnswers = questionHandler.getAllAnswers();
-        for(int i = 0; i < 5; i++){ //dont really want to hard code how many there are...
+        for(int i = 0; i < 5; i++){
 
-            answerViews.get(i).setText("");
+            answerViews.get(i).setText(allAnswers.get(i));
         }
     }
 }
