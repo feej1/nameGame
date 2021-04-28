@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="2021 © Task Failed Successfully. All rights reserved. | 0.0.1"
+        android:text="2021 © Task Failed Successfully Inc. All rights reserved. | 0.0.1"
         android:textColor="@android:color/darker_gray"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
