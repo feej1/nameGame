@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 public class MainMenuActivity extends AppCompatActivity {
 
@@ -14,7 +13,12 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
-        Button b = findViewById(R.id.button3);
+
+        // Main menu title type writer
+        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_title);
+        tw.setText("");
+        tw.setCharacterDelay(400);
+        tw.animateText("THE NAME GAME.");
     }
 
     /**
@@ -43,5 +47,4 @@ public class MainMenuActivity extends AppCompatActivity {
         Intent intent = new Intent(this, GoogleLoginActivity.class);
         startActivity(intent);
     }
-
 }

@@ -132,5 +132,10 @@ public class QuestionHandler {
         return currQ;
     }
 
+    public List<String> getAllAnswers(){
+        List<String> allAnswers = wrongAns.get(currQ);
+        allAnswers.add(allAnswers.get(currQ));
+        return allAnswers;
+    }
 
 }
