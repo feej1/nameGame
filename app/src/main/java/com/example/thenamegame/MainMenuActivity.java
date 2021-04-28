@@ -12,6 +12,12 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        // Main menu title type writer
+        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_title);
+        tw.setText("");
+        tw.setCharacterDelay(400);
+        tw.animateText("THE NAME GAME.");
     }
 
     /**
@@ -19,7 +25,7 @@ public class MainMenuActivity extends AppCompatActivity {
      * @author Ian Olds
      */
     public void switchToFormType(View view){
-        Intent intent = new Intent(this, FormType.class);
+        Intent intent = new Intent(this, FormTypeActivity.class);
         startActivity(intent);
     }
 
