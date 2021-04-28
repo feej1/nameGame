@@ -6,6 +6,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -24,6 +26,11 @@ public class NameGameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_game);
 
+        findAllViewsByID();
+        populateQuestionAndAnswers();
+    }
+
+    private void findAllViewsByID(){
         streakText = findViewById(R.id.streakView);
         questionText = findViewById(R.id.questionView);
         answerViews.add(findViewById(R.id.answerView1));
@@ -37,8 +44,8 @@ public class NameGameActivity extends AppCompatActivity {
         questionText.setText(questionHandler.getQuestion());
 
         List<String> allAnswers = questionHandler.getAllAnswers();
+        Collections.shuffle(allAnswers);
         for(int i = 0; i < 5; i++){
-
             answerViews.get(i).setText(allAnswers.get(i));
         }
     }
