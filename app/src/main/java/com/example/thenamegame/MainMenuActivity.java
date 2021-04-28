@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+/**
+ * @author Ian
+ */
 public class MainMenuActivity extends AppCompatActivity {
 
 
@@ -21,28 +24,19 @@ public class MainMenuActivity extends AppCompatActivity {
         tw.animateText("THE NAME GAME.");
     }
 
-    /**
-     * @param view
-     * @author Ian Olds
-     */
+
     public void switchToFormType(View view){
         Intent intent = new Intent(this, FormTypeActivity.class);
         startActivity(intent);
     }
 
-    /**
-     * @param view
-     * @author Ian Olds
-     */
+
     public void switchToLeaderBoard(View view){
         Intent intent = new Intent(this, LeaderBoardActivity.class);
         startActivity(intent);
     }
 
-    /**
-     * @param view
-     * @author Ian Olds
-     */
+
     public void switchToGoogleLogin(View view){
         Intent intent = new Intent(this, GoogleLoginActivity.class);
         startActivity(intent);
