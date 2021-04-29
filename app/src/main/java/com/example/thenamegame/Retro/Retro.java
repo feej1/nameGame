@@ -1,4 +1,4 @@
-package com.example.thenamegame;
+package com.example.thenamegame.Retro;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
