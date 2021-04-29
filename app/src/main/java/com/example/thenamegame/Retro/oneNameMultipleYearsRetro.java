@@ -20,14 +20,14 @@ public class oneNameMultipleYearsRetro extends RetroRunnable{
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                Log.d("GETALL", response.body().toString());
+                Log.d("RetroRunnable GETALL", response.body().toString());
                 //System.out.println(response.body().toString());
                 fillLists(response.body());
             } //ends overiddden method
 
             @Override
             public void onFailure(Call<JsonObject> call, Throwable t) {
-                Log.d("GETALL", "FAILED     " + t.toString());
+                Log.d("RetroRunnable GETALL", "FAILED     " + t.toString());
 
             }
 

@@ -6,6 +6,7 @@ import com.example.thenamegame.Question;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Random;
@@ -18,6 +19,7 @@ public abstract class RetroRunnable implements Runnable {
     private Queue<Question> preparedQuestions;
     private boolean running;
     private int maxQueueSize;
+    private boolean grabbingQuestion;
     Retro retroInterface;
 
     public RetroRunnable(int maxQueueSize){
@@ -27,10 +29,13 @@ public abstract class RetroRunnable implements Runnable {
 
     @Override
     public void run() {
+        preparedQuestions = new LinkedList<>();
         running = true;
         while(running){
-            if(getNumberOfPreparedQuestions() <= maxQueueSize) {
+            if(getNumberOfPreparedQuestions() <= maxQueueSize && !grabbingQuestion) {
+                grabbingQuestion = true;
                 getQuestionFromDataBase();
+                Log.d("RetroRunnable", "number of questions" + getNumberOfPreparedQuestions());
             }
         }
     }
@@ -58,6 +63,7 @@ public abstract class RetroRunnable implements Runnable {
         String a = obj.get("answer").getAsString();
         //System.out.println(q);
         preparedQuestions.add(new Question(q, a, makeWrongYears(a)));
+        grabbingQuestion = false;
     }
 
     private List<String> makeWrongYears(String correct){

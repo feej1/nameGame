@@ -1,5 +1,7 @@
 package com.example.thenamegame.Retro;
 
+import android.util.Log;
+
 import com.example.thenamegame.Question;
 
 public class RetroQuestionRunner {
@@ -29,7 +31,7 @@ public class RetroQuestionRunner {
     }
 
     public void start(){
-
+        Log.d("RetroQuestionRunner", "Starting...");
         thread = new Thread(retroRunnable);
         thread.start();
         started = true;
