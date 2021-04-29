@@ -5,8 +5,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.RatingBar;
 import android.widget.Button;
+import android.widget.RatingBar.OnRatingBarChangeListener;
+
 /**
  * THis menu lets the user decide what to play challenge/nameGame/Stars
+ * Author Patrick Sowada
  */
 public class FormTypeActivity extends AppCompatActivity {
     //So for this class I think I want to have multiple forms as Ian had mentioned up above.
@@ -14,6 +17,9 @@ public class FormTypeActivity extends AppCompatActivity {
     //in addition this should let the user select how many stars, and if the nameGame is multiplayer
 
     //Beginning work on 5 stars
+    boolean clicked = false;
+    private int difficulty;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -21,41 +27,58 @@ public class FormTypeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_form_type);
         RatingBar starDifficulty = findViewById(R.id.stars);
 
-        starDifficulty.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
+        starDifficulty.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar ratingBar, float v, boolean fromUser) {
                 int difficulty = (int) v;
 
                 switch (difficulty) {
                     case 1:
-                        // starFormDifficulty1;
+                        difficulty = 1;
                         break;
                     case 2:
-                        // starFormDifficulty2;
+                        difficulty = 2;
                         break;
                     case 3:
-                        //  starFormDifficulty3;
+                        difficulty = 3;
                         break;
                     case 4:
-                        //   starFormDifficulty4;
+                        difficulty = 4;
                         break;
                     case 5:
-                        //  starFormDifficulty5;
+                        difficulty = 5;
                         break;
             }
         }});
 
        }
 
-    public void switchNameGameOrChallenge(View view) {
+    public void playSetUp(View view) {
+        Button form1button = (Button) findViewById(R.id.form1button);
+        Button form2button = (Button) findViewById(R.id.form2button);
         Button multiplayerButton = (Button) findViewById(R.id.multiplayerButton);
 
-        if (multiplayerButton.callOnClick()) {
+        if (form1button.isPressed() == true){
+            //pass on Difficulty 1-5
+        }
+        else if(form2button.isPressed() == true){
+            //pass on Difficulty 1-5
+        }
+        else{
+            //mixedformbutton.isPressed() == true
+            //and therefore should prep mixed form 1 and 2 questions
+            //pass on Difficulty 1-5
+        }
+
+        if (multiplayerButton.isPressed()==true) {
             Intent intent = new Intent(this, ChallengeActivity.class);
             startActivity(intent);
+            //pass on Difficulty 1-5
         } else {
             Intent intent = new Intent(this, NameGameActivity.class);
             startActivity(intent);
+            //pass on Difficulty 1-5
+
         }
     }
     public void setUpForm1(View view) {

@@ -114,7 +114,7 @@
         android:layout_width="213dp"
         android:layout_height="52dp"
         android:layout_marginBottom="124dp"
-        android:onClick="switchNameGameOrChallenge"
+        android:onClick="playSetUp"
         android:text="PLAY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
