@@ -18,10 +18,10 @@ public class Question {
     public Question(String question, String answer, String wrongAnswer1,String wrongAnswer2,String wrongAnswer3,String wrongAnswer4){
         this.question = question;
         this.answer = answer;
-        wrongAnswers .add(wrongAnswer1);
-        wrongAnswers .add(wrongAnswer2);
-        wrongAnswers .add(wrongAnswer3);
-        wrongAnswers .add(wrongAnswer4);
+        wrongAnswers.add(wrongAnswer1);
+        wrongAnswers.add(wrongAnswer2);
+        wrongAnswers.add(wrongAnswer3);
+        wrongAnswers.add(wrongAnswer4);
     }
 
     public String getQuestion() {

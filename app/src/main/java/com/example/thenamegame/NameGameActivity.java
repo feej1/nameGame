@@ -31,6 +31,7 @@ public class NameGameActivity extends AppCompatActivity {
 
         findAllViewsByID();
         populateQuestionAndAnswers();
+        questionHandler.getNewQuestion();
     }
 
     private void findAllViewsByID(){
@@ -57,6 +58,7 @@ public class NameGameActivity extends AppCompatActivity {
         try {
             String buttonText = ((Button) view).getText().toString();
             questionHandler.submit(buttonText);
+            questionHandler.getNewQuestion();
             populateQuestionAndAnswers();
         }catch (Exception e){
 
