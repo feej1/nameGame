@@ -17,7 +17,7 @@ import retrofit2.http.Query;
 public interface Retro {
 
     //gets a name, the correct year, and 4 other random years
-    @GET("getOneNameMultipleYears")
+    @GET("getYearQuestions")
     Call<JsonObject> getOneNameMultipleYears();
 
     //gets a year, the correct name, and 4 other random names
@@ -63,7 +63,7 @@ public interface Retro {
             .create();
 
     public static final Retrofit retro = new Retrofit.Builder()
-            .baseUrl("http://ukko.d.umn.edu:8087/")
+            .baseUrl("http://ukko.d.umn.edu:8090/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build();
 }

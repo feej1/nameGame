@@ -8,10 +8,17 @@ import android.view.View;
 
 public class MainMenuActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        // Main menu title type writer
+        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_title);
+        tw.setText("");
+        tw.setCharacterDelay(400);
+        tw.animateText("THE NAME GAME.");
     }
 
     /**
