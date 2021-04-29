@@ -60,47 +60,64 @@ public class FormTypeActivity extends AppCompatActivity {
     }
     public void setUpForm1(View view) {
         Button form1button = (Button) findViewById(R.id.form1button);
+        Button form2button = (Button) findViewById(R.id.form2button);
+        Button mixformbutton = (Button) findViewById(R.id.mixformbutton);
         form1button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 form1button.setClickable(false);
+                form2button.setClickable(true);
+                mixformbutton.setClickable(true);
             }
         });
     }
     public void setUpForm2(View view) {
+        Button form1button = (Button) findViewById(R.id.form1button);
         Button form2button = (Button) findViewById(R.id.form2button);
+        Button mixformbutton = (Button) findViewById(R.id.mixformbutton);
         form2button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                form1button.setClickable(true);
                 form2button.setClickable(false);
+                mixformbutton.setClickable(true);
             }
         });
     }
     public void setUpMixedForm(View view) {
+        Button form1button = (Button) findViewById(R.id.form1button);
+        Button form2button = (Button) findViewById(R.id.form2button);
         Button mixformbutton = (Button) findViewById(R.id.mixformbutton);
         mixformbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                form1button.setClickable(true);
+                form2button.setClickable(true);
                 mixformbutton.setClickable(false);
+
             }
         });
     }
 
     public void setUpMultiplayerButton(View view) {
+        Button singleplayerButton = (Button) findViewById(R.id.singleplayerButton);
         Button multiplayerButton = (Button) findViewById(R.id.multiplayerButton);
         multiplayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                singleplayerButton.setClickable(true);
                 multiplayerButton.setClickable(false);
             }
         });
     }
     public void setUpSingleplayerButton(View view) {
-        Button singleplayerButton = (Button) findViewById(R.id.mixformbutton);
+        Button singleplayerButton = (Button) findViewById(R.id.singleplayerButton);
+        Button multiplayerButton = (Button) findViewById(R.id.multiplayerButton);
         singleplayerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 singleplayerButton.setClickable(false);
+                multiplayerButton.setClickable(true);
             }
         });
     }
