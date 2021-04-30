@@ -1,4 +1,4 @@
-package com.example.thenamegame;
+package com.example.TaskFailedNameGame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.thenamegame.Retro.RetroQuestionRunner;
-import com.example.thenamegame.Retro.RetroRunnable;
+import com.example.TaskFailedNameGame.Retro.RetroQuestionRunner;
 
 /**
  * @author Ian

@@ -1,4 +1,4 @@
-package com.example.thenamegame;
+package com.example.TaskFailedNameGame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
