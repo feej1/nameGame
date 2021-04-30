@@ -1,30 +1,38 @@
 package com.example.thenamegame;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Question {
 
-    private String question;
+    private final String question;
     private String answer;
-    private ArrayList<String> wrongAnswers;
+    private List<String> wrongAnswers;
+
+    public Question(String question, String answer, List<String> wrongAnswers){
+        this.question = question;
+        this.answer = answer;
+        this.wrongAnswers = wrongAnswers;
+    }
+
+    public Question(String question, String answer, String wrongAnswer1,String wrongAnswer2,String wrongAnswer3,String wrongAnswer4){
+        this.question = question;
+        this.answer = answer;
+        wrongAnswers.add(wrongAnswer1);
+        wrongAnswers.add(wrongAnswer2);
+        wrongAnswers.add(wrongAnswer3);
+        wrongAnswers.add(wrongAnswer4);
+    }
 
     public String getQuestion() {
         return question;
-    }
-
-    public void setQuestion(String question) {
-        this.question = question;
     }
 
     public String getAnswer() {
         return answer;
     }
 
-    public void setAnswer(String answer) {
-        this.answer = answer;
-    }
-
-    public ArrayList<String> getWrongAnswers() {
+    public List<String> getWrongAnswers() {
         return wrongAnswers;
     }
 
@@ -33,8 +41,5 @@ public class Question {
             return wrongAnswers.get(i);
         }
         return null;
-    }
-    public void addOneWrongAnswer(String wrongAnswer) {
-        wrongAnswers.add(wrongAnswer);
     }
 }

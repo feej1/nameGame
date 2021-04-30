@@ -2,9 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/formType"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainMenuActivity">
+    tools:context=".FormTypeActivity">
 
     <TextView
         android:id="@+id/textView2"
@@ -21,26 +22,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.372" />
+        app:layout_constraintVertical_bias="0.059" />
 
     <TextView
-        android:id="@+id/welcomeText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:fontFamily="sans-serif-black"
-        android:gravity="center"
-        android:text="Welcome to"
-        android:textAlignment="center"
-        android:textColor="@android:color/tertiary_text_light"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/copyrightText"
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -51,55 +36,88 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
+    <RatingBar
+        android:id="@+id/stars"
+        android:layout_width="245dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="12dp"
+        android:stepSize="1"
+        app:layout_constraintBottom_toTopOf="@+id/launchGameButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <Button
-        android:id="@+id/googleButton"
-        android:layout_width="0dp"
+        android:id="@+id/form1button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginLeft="48dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="setUpForm1"
+        android:text="Form 1"
+        app:layout_constraintBottom_toTopOf="@+id/stars"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <Button
+        android:id="@+id/form2button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="setUpForm2"
+        android:text="Form 2"
+        app:layout_constraintBottom_toTopOf="@+id/stars"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/mixformbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="144dp"
+        android:layout_marginRight="144dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="setUpMixedForm"
+        android:text="Mix Forms"
+        app:layout_constraintBottom_toTopOf="@+id/stars"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/singleplayerButton"
+        android:layout_width="156dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="56dp"
+        android:onClick="setUpSingleplayerButton"
+        android:text="Single Player"
+        app:layout_constraintBottom_toTopOf="@+id/form1button"
+        app:layout_constraintEnd_toStartOf="@+id/multiplayerButton"
+        app:layout_constraintHorizontal_bias="0.827"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/multiplayerButton"
+        android:layout_width="157dp"
+        android:layout_height="50dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="switchToGoogleLogin"
-        android:text="Login with Google"
-        android:textAllCaps="false"
-        app:backgroundTint="#4CAF50"
+        android:layout_marginBottom="52dp"
+        android:onClick="setUpMultiplayerButton"
+        android:text="Multiplayer"
+        app:layout_constraintBottom_toTopOf="@+id/form2button"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/launchGameButton"
+        android:layout_width="213dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="124dp"
+        android:onClick="playSetUp"
+        android:text="PLAY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/leaderboardButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="switchToLeaderBoard"
-        android:text="LEADERBOARD"
-        app:backgroundTint="#2196F3"
-        app:layout_constraintBottom_toTopOf="@+id/googleButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/playButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="switchToFormType"
-        android:text="PLAY"
-        app:backgroundTint="#2196F3"
-        app:layout_constraintBottom_toTopOf="@+id/leaderboardButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

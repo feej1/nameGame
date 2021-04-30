@@ -9,4 +9,10 @@ public class QuestionHandlerTest {
     public void creation() {
         QuestionHandler questionHandler = new QuestionHandler();
     }
+
+    @Test
+    public void filledQuestion() {
+        QuestionHandler questionHandler = new QuestionHandler();
+
+    }
 }

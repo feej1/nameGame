@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.thenamegame"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -27,6 +27,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 }
+
+task prepareKotlinBuildScriptModel{}
+//lintOptions{abortOnError false}
 
 dependencies {
 

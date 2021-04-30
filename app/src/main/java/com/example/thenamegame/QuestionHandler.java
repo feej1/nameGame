@@ -1,23 +1,8 @@
 package com.example.thenamegame;
 
-import android.content.Context;
-import android.util.Log;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
+import com.example.thenamegame.Retro.RetroQuestionRunner;
 
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
-
 
 /**
  * @author Ian Olds
@@ -25,95 +10,61 @@ import retrofit2.Response;
 
 public class QuestionHandler {
 
-    private List<String> questions;
-    private List<String> answers;
-    private List<List<String>> wrongAns;
-    private int currQ;
-    private String currAnswer;
+
+    private int questionNumber;
+    private Question currQuestion;
+
     int totalRight;
-    Retro interfaceName = Retro.retro.create(Retro.class);
+    RetroQuestionRunner retroQuestionRunner;
 
     public QuestionHandler(){
-        questions = new ArrayList<>();
-        answers = new ArrayList<>();
-        wrongAns = new ArrayList<>();
-        currAnswer = null;
-        currQ = 0;
+        currQuestion = null;
+        questionNumber = 0;
         totalRight = 0;
-        populateFields();
+        retroQuestionRunner = RetroQuestionRunner.getOneNameInstance();
     }
 
-
-    private void fillLists(JsonObject obj){
-            String q = obj.get("question").getAsString();
-            String a = obj.get("answer").getAsString();
-            System.out.println(q);
-            questions.add(q);
-            answers.add(a);
-    }
-
-   private void populateFields(){
-        for(int i = 0; i<10; i++) {
-            Call<JsonObject> call = interfaceName.getOneNameMultipleYears();
-            call.enqueue(new Callback<JsonObject>() {
-                @Override
-                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                    Log.d("GETALL", response.body().toString());
-                    //System.out.println(response.body().toString());
-                    fillLists(response.body());
-                } //ends overiddden method
-
-                @Override
-                public void onFailure(Call<JsonObject> call, Throwable t) {
-                    Log.d("GETALL", "FAILED     " + t.toString());
-
-                }
-
-            });   //end enqeue
-        }
-   }
-
-    public void startQuestions(){currQ =1; }
-
-    public boolean  submit(String s) throws Exception{
-        Boolean isRight;
-        if (getQuestionAnswer() == s) isRight = true;
-        else isRight= false;
-        return isRight;
-    }
-    private boolean atEnd(){
-        if (currQ <= 10) return false;
-        else return true;
-    }
-
-    public boolean advancedQuestion(){
+    public boolean getNewQuestion(){
         if (!atEnd()) {
-            currQ++ ;
+            questionNumber++;
+            currQuestion = retroQuestionRunner.getOneQuestion();
             return true;
         }
         else return false;
     }
 
+    public boolean submit(String s) {
+        boolean correct = getQuestionAnswer().equals(s);
+        if(correct){
+            totalRight++;
+        }
+        return correct;
+    }
+    private boolean atEnd(){
+        return !(questionNumber <= 10);
+    }
+
+
     public String getQuestionAnswer(){     //get the questions answer
-      return answers.get(currQ);
+      return currQuestion.getAnswer();
     }
 
     public String getQuestion(){     //gets the curr questions
-        return questions.get(currQ);
+        return currQuestion.getQuestion();
     }
 
     //returns list of strings!!!
-    public List<String> getWrongAnswer(){   //gets the current wrong answers
-        return wrongAns.get(currQ);
+    public List<String> getWrongAnswers(){   //gets the current wrong answers
+        return currQuestion.getWrongAnswers();
     }
 
-    public int getCurrQ() {      //gets the current question number
-        return currQ;
+    public int getQuestionNumber() {      //gets the current question number
+        return questionNumber;
     }
 
     public List<String> getAllAnswers(){
-        List<String> allAnswers = wrongAns.get(currQ);
-        allAnswers.add(allAnswers.get(currQ));
+        List<String> allAnswers = getWrongAnswers();
+        allAnswers.add(getQuestionAnswer());
         return allAnswers;
     }
 
