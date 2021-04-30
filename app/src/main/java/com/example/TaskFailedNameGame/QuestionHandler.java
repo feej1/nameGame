@@ -2,6 +2,7 @@ package com.example.TaskFailedNameGame;
 
 import com.example.TaskFailedNameGame.Retro.RetroQuestionRunner;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -17,11 +18,11 @@ public class QuestionHandler {
     int totalRight;
     RetroQuestionRunner retroQuestionRunner;
 
-    public QuestionHandler(){
+    public QuestionHandler(RetroQuestionRunner retroQuestionRunnerInstance){
         currQuestion = null;
         questionNumber = 0;
         totalRight = 0;
-        retroQuestionRunner = RetroQuestionRunner.getOneNameInstance();
+        retroQuestionRunner = retroQuestionRunnerInstance;
     }
 
     public boolean getNewQuestion(){

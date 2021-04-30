@@ -19,6 +19,9 @@ public interface Retro {
     @GET("getNameQuestions")
     Call<JsonObject> getOneYearMultipleNames();
 
+    @GET("getRandomName")
+    Call<JsonObject> getRandomName();
+
     @GET("getOneStar")
     Call<JsonObject> getOneStar();
 

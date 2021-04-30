@@ -26,7 +26,7 @@ public class MainMenuActivity extends AppCompatActivity {
         tw.animateText("THE NAME GAME.");
 
         RetroQuestionRunner.getOneNameInstance().start();
-        //RetroQuestionRunner.getOneYearInstance().start(); not dinished
+        //RetroQuestionRunner.getOneYearInstance().start();
     }
 
 

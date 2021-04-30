@@ -8,6 +8,8 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.TaskFailedNameGame.Retro.RetroQuestionRunner;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -18,7 +20,6 @@ import java.util.List;
  */
 public class NameGameActivity extends AppCompatActivity {
 
-    TextView streakText;
     TextView questionText;
     List<TextView> answerViews = new ArrayList<>();
     QuestionHandler questionHandler;
@@ -27,7 +28,12 @@ public class NameGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_game);
-        questionHandler = new QuestionHandler();
+        Intent intent = getIntent();
+        if(intent.getBooleanExtra("FormType1", true)){
+            questionHandler = new QuestionHandler(RetroQuestionRunner.getOneNameInstance());
+        }else{
+            questionHandler = new QuestionHandler(RetroQuestionRunner.getOneYearInstance());
+        }
 
         findAllViewsByID();
         populateQuestionAndAnswers();
@@ -44,7 +50,7 @@ public class NameGameActivity extends AppCompatActivity {
 
     private void populateQuestionAndAnswers(){
         if(!questionHandler.getNewQuestion()){
-            Intent intent = new Intent(this, LeaderBoardActivity.class);
+            Intent intent = new Intent(this, MainMenuActivity.class);
             startActivity(intent);
         }
 

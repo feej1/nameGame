@@ -18,6 +18,7 @@ public class oneYearMultipleNamesRetro extends RetroRunnable{
         super(10);
     }
 
+
     @Override
     protected void getQuestionFromDataBase() {
         Call<JsonObject> call = retroInterface.getOneYearMultipleNames();
@@ -45,6 +46,30 @@ public class oneYearMultipleNamesRetro extends RetroRunnable{
      */
     @Override
     protected List<String> makeWrongAnswers(String correct) {
-        return new ArrayList<>();
+        List<String> wrongAnswers = new ArrayList<>();
+
+        for(int i = 0; i < 4; i++) {
+            Call<JsonObject> call = retroInterface.getRandomName();
+            call.enqueue(new Callback<JsonObject>() {
+                @Override
+                public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                    Log.d("RetroRunnable GETALL", response.body().toString());
+                    //System.out.println(response.body().toString());
+                    wrongAnswers.add(response.body().get("name").getAsString());
+                } //ends overiddden method
+
+                @Override
+                public void onFailure(Call<JsonObject> call, Throwable t) {
+                    Log.d("RetroRunnable GETALL", "FAILED     " + t.toString());
+
+                }
+
+            });   //end enqeue
+        }
+
+        while(wrongAnswers.size() < 4){
+            Log.d("RetroRunnable NAME", "SPAMMING");
+        }
+        return wrongAnswers;
     }
 }

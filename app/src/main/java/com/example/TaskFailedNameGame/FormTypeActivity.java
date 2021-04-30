@@ -7,6 +7,10 @@ import android.widget.RatingBar;
 import android.widget.Button;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 
+import com.example.TaskFailedNameGame.Retro.RetroQuestionRunner;
+
+import java.io.Serializable;
+
 /**
  * THis menu lets the user decide what to play challenge/nameGame/Stars
  * Author Patrick Sowada
@@ -76,6 +80,12 @@ public class FormTypeActivity extends AppCompatActivity {
             //pass on Difficulty 1-5
         } else {
             Intent intent = new Intent(this, NameGameActivity.class);
+            if (form1button.isPressed()){
+                intent.putExtra("FormType1", true);
+            }
+            else if(form2button.isPressed()){
+                intent.putExtra("FormType1", false);
+            }
             startActivity(intent);
             //pass on Difficulty 1-5
 
