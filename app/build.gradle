@@ -28,6 +28,9 @@ android {
     }
 }
 
+task prepareKotlinBuildScriptModel{}
+//lintOptions{abortOnError false}
+
 dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.2.0'
