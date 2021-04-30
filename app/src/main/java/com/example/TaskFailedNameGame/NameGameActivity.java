@@ -28,6 +28,8 @@ public class NameGameActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_name_game);
+        getSupportActionBar().hide();
+
         Intent intent = getIntent();
         if(intent.getBooleanExtra("FormType1", true)){
             questionHandler = new QuestionHandler(RetroQuestionRunner.getOneNameInstance());
@@ -40,7 +42,6 @@ public class NameGameActivity extends AppCompatActivity {
     }
 
     private void findAllViewsByID(){
-        questionText = findViewById(R.id.questionView);
         answerViews.add(findViewById(R.id.answerView1));
         answerViews.add(findViewById(R.id.answerView2));
         answerViews.add(findViewById(R.id.answerView3));
@@ -54,7 +55,11 @@ public class NameGameActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-        questionText.setText(questionHandler.getQuestion());
+        // Type writer
+        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_nameGame);
+        tw.setText("");
+        tw.setCharacterDelay(50);
+        tw.animateText(questionHandler.getQuestion());
 
         List<String> allAnswers = questionHandler.getAllAnswers();
         Collections.shuffle(allAnswers);
