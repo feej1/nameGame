@@ -1,4 +1,4 @@
-package com.example.thenamegame.Retro;
+package com.example.TaskFailedNameGame.Retro;
 
 import android.util.Log;
 

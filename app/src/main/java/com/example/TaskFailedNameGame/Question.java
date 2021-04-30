@@ -1,6 +1,5 @@
-package com.example.thenamegame;
+package com.example.TaskFailedNameGame;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Question {

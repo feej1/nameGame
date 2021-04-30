@@ -1,6 +1,6 @@
-package com.example.thenamegame;
+package com.example.TaskFailedNameGame;
 
-import com.example.thenamegame.Retro.RetroQuestionRunner;
+import com.example.TaskFailedNameGame.Retro.RetroQuestionRunner;
 
 import java.util.List;
 

@@ -1,8 +1,8 @@
-package com.example.thenamegame.Retro;
+package com.example.TaskFailedNameGame.Retro;
 
 import android.util.Log;
 
-import com.example.thenamegame.Question;
+import com.example.TaskFailedNameGame.Question;
 
 public class RetroQuestionRunner {
     private Thread thread;

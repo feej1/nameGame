@@ -1,8 +1,8 @@
-package com.example.thenamegame.Retro;
+package com.example.TaskFailedNameGame.Retro;
 
 import android.util.Log;
 
-import com.example.thenamegame.Question;
+import com.example.TaskFailedNameGame.Question;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
@@ -10,10 +10,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 import java.util.Random;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public abstract class RetroRunnable implements Runnable {
     private Queue<Question> preparedQuestions;
