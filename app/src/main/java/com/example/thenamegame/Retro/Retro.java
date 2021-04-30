@@ -21,8 +21,23 @@ public interface Retro {
     Call<JsonObject> getOneNameMultipleYears();
 
     //gets a year, the correct name, and 4 other random names
-    @GET("getOneYearMultipleNames")
+    @GET("getNameQuestions")
     Call<JsonObject> getOneYearMultipleNames();
+
+    @GET("getOneStar")
+    Call<JsonObject> getOneStar();
+
+    @GET("getTwoStar")
+    Call<JsonObject> getTwoStar();
+
+    @GET("getThreeStar")
+    Call<JsonObject> getThreeStar();
+
+    @GET("getFourStar")
+    Call<JsonObject> getFourStar();
+
+    @GET("getFiveStar")
+    Call<JsonObject> getFiveStar();
 
     /*
     Example from TechPrep

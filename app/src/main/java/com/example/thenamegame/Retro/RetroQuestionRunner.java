@@ -10,22 +10,37 @@ public class RetroQuestionRunner {
     private boolean started = false;
     private RetroRunnable retroRunnable;
 
-    private static RetroQuestionRunner instance;
+    private static RetroQuestionRunner oneNameInstance;
+    private static RetroQuestionRunner oneYearInstance;
 
     /**
-     *
      * @return The only instance that will run one name multiple years
      */
     public static RetroQuestionRunner getOneNameInstance(){
-        if (instance == null) {
+        if (oneNameInstance == null) {
             try {
-                instance = new RetroQuestionRunner(new oneNameMultipleYearsRetro());
-                System.out.println("returning a RUNNER");
+                oneNameInstance = new RetroQuestionRunner(new oneNameMultipleYearsRetro());
+                System.out.println("returning a NAME RUNNER");
             } catch (Exception exc) {
                 System.out.println("RUNNER DOES NOT ESIST--------------");
             }
         }
-        return instance;
+        return oneNameInstance;
+    }
+
+    /**
+     * @return The only instance that will run one name multiple years
+     */
+    public static RetroQuestionRunner getOneYearInstance(){
+        if (oneYearInstance == null) {
+            try {
+                oneYearInstance = new RetroQuestionRunner(new oneYearMultipleNamesRetro());
+                System.out.println("returning a YEAR RUNNER");
+            } catch (Exception exc) {
+                System.out.println("RUNNER DOES NOT ESIST--------------");
+            }
+        }
+        return oneYearInstance;
     }
 
     public RetroQuestionRunner(RetroRunnable retroRunnable){

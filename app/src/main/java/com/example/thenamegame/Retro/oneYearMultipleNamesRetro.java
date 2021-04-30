@@ -4,7 +4,6 @@ import android.util.Log;
 
 import com.google.gson.JsonObject;
 
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -13,15 +12,15 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class oneNameMultipleYearsRetro extends RetroRunnable{
+public class oneYearMultipleNamesRetro extends RetroRunnable{
 
-    public oneNameMultipleYearsRetro(){
+    public oneYearMultipleNamesRetro(){
         super(10);
     }
 
     @Override
     protected void getQuestionFromDataBase() {
-        Call<JsonObject> call = retroInterface.getOneNameMultipleYears();
+        Call<JsonObject> call = retroInterface.getOneYearMultipleNames();
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
@@ -46,14 +45,6 @@ public class oneNameMultipleYearsRetro extends RetroRunnable{
      */
     @Override
     protected List<String> makeWrongAnswers(String correct) {
-        Random random = new Random();
-        List<String> toPutinWorngAnswers= new ArrayList<>();
-        for (int i =0; i<4; i++) {
-            int wrongYear = random.nextInt(127) + 1880; // makes a random int between 0 and 126 (range of years) then adds min year to get 1880-2007
-            String strWrongYear = String.valueOf(wrongYear);
-            if (!toPutinWorngAnswers.contains(strWrongYear) && correct!=strWrongYear)
-                toPutinWorngAnswers.add(strWrongYear);
-        }
-        return toPutinWorngAnswers;
+        return new ArrayList<>();
     }
 }

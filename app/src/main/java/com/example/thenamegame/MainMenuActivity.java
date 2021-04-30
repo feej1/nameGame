@@ -26,8 +26,8 @@ public class MainMenuActivity extends AppCompatActivity {
         tw.setCharacterDelay(400);
         tw.animateText("THE NAME GAME.");
 
-        RetroQuestionRunner retroQuestionRunner = RetroQuestionRunner.getOneNameInstance();
-        retroQuestionRunner.start();
+        RetroQuestionRunner.getOneNameInstance().start();
+        //RetroQuestionRunner.getOneYearInstance().start(); not dinished
     }
 
 
