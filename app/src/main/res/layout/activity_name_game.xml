@@ -11,10 +11,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:onClick="questionClicked"
         app:backgroundTint="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,16 +25,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:onClick="questionClicked"
         app:backgroundTint="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answerView4"
-        android:onClick="questionClicked"/>
+        app:layout_constraintTop_toBottomOf="@+id/answerView4" />
 
 
     <Button
@@ -44,32 +40,28 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:onClick="questionClicked"
         app:backgroundTint="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answerView2"
-        android:onClick="questionClicked"/>
+        app:layout_constraintTop_toBottomOf="@+id/answerView2" />
 
     <Button
         android:id="@+id/answerView4"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:onClick="questionClicked"
         app:backgroundTint="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/answerView3"
-        android:onClick="questionClicked"/>
+        app:layout_constraintTop_toBottomOf="@+id/answerView3" />
 
     <TextView
         android:id="@+id/questionView"
@@ -83,36 +75,23 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
-
-    <TextView
-        android:id="@+id/streakView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Streak"
-        android:textColor="@android:color/tertiary_text_light"
-        android:textStyle="italic"
-        app:layout_constraintBottom_toTopOf="@+id/questionView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintVertical_bias="0.136" />
 
     <Button
         android:id="@+id/answerView1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
+        android:onClick="questionClicked"
         app:backgroundTint="#2196F3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionView"
-        android:onClick="questionClicked"/>
+        app:layout_constraintTop_toBottomOf="@+id/questionView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

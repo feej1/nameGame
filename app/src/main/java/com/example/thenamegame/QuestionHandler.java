@@ -21,7 +21,7 @@ public class QuestionHandler {
         currQuestion = null;
         questionNumber = 0;
         totalRight = 0;
-        RetroQuestionRunner.getOneNameInstance();
+        retroQuestionRunner = RetroQuestionRunner.getOneNameInstance();
     }
 
     public boolean getNewQuestion(){
@@ -34,7 +34,11 @@ public class QuestionHandler {
     }
 
     public boolean submit(String s) {
-        return getQuestionAnswer().equals(s);
+        boolean correct = getQuestionAnswer().equals(s);
+        if(correct){
+            totalRight++;
+        }
+        return correct;
     }
     private boolean atEnd(){
         return !(questionNumber <= 10);

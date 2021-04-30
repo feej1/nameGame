@@ -20,7 +20,9 @@ public class RetroQuestionRunner {
         if (instance == null) {
             try {
                 instance = new RetroQuestionRunner(new oneNameMultipleYearsRetro());
+                System.out.println("returning a RUNNER");
             } catch (Exception exc) {
+                System.out.println("RUNNER DOES NOT ESIST--------------");
             }
         }
         return instance;
