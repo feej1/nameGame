@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.TaskFailedNameGame.NameGameActivity">
 
-    <com.example.thenamegame.TypeWriter
+    <com.example.TaskFailedNameGame.TypeWriter
         android:id="@+id/typeWriter_nameGame"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
