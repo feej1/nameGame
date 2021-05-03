@@ -32,15 +32,16 @@ public class NameGameActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         Log.d("NameGame","FormType is " + intent.getIntExtra("FormType", 3));
+        int difficulty = intent.getIntExtra("Difficulty", 0);
         switch (intent.getIntExtra("FormType", 3)){
             case 1:
-                questionHandler = new QuestionHandler(RetroQuestionRunner.getOneNameInstance());
+                questionHandler = new QuestionHandler(RetroQuestionRunner.getOneNameInstance(difficulty));
                 break;
             case 2:
-                questionHandler = new QuestionHandler(RetroQuestionRunner.getOneYearInstance());
+                questionHandler = new QuestionHandler(RetroQuestionRunner.getOneYearInstance(difficulty));
                 break;
             default:
-                questionHandler = new QuestionHandler(RetroQuestionRunner.getOneNameInstance());
+                questionHandler = new QuestionHandler(RetroQuestionRunner.getOneNameInstance(difficulty));
                 break;
         }
 

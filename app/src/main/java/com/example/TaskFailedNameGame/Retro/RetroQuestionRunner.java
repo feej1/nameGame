@@ -14,9 +14,10 @@ public class RetroQuestionRunner {
     private static RetroQuestionRunner oneYearInstance;
 
     /**
+     * @param difficulty 0=any, 1-5 = 1-5 stars
      * @return The only instance that will run one name multiple years
      */
-    public static RetroQuestionRunner getOneNameInstance(){
+    public static RetroQuestionRunner getOneNameInstance(int difficulty){
         if (oneNameInstance == null) {
             try {
                 oneNameInstance = new RetroQuestionRunner(new OneNameMultipleYearsRetro());
@@ -29,9 +30,10 @@ public class RetroQuestionRunner {
     }
 
     /**
+     * @param difficulty 0=any, 1-5 = 1-5 stars
      * @return The only instance that will run one name multiple years
      */
-    public static RetroQuestionRunner getOneYearInstance(){
+    public static RetroQuestionRunner getOneYearInstance(int difficulty){
         if (oneYearInstance == null) {
             try {
                 oneYearInstance = new RetroQuestionRunner(new OneYearMultipleNamesRetro());
