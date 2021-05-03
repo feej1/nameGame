@@ -1,7 +1,9 @@
 package com.example.TaskFailedNameGame;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -80,12 +82,33 @@ public class NameGameActivity extends AppCompatActivity {
     }
 
     public void questionClicked(View view){
-        try {
-            String buttonText = ((Button) view).getText().toString();
-            questionHandler.submit(buttonText);
-            populateQuestionAndAnswers();
-        }catch (Exception e){
-
+        String buttonText = ((Button) view).getText().toString();
+        if(questionHandler.submit(buttonText)){
+            showAlertDialogWithAutoDismiss("Correct!");
+        }else{
+            showAlertDialogWithAutoDismiss("Incorrect.");
         }
+        populateQuestionAndAnswers();
+    }
+
+    public void showAlertDialogWithAutoDismiss(String message) {
+        //todo: alec work your magic
+//        AlertDialog.Builder builder = new AlertDialog.Builder(NameGameActivity.this);
+//        builder
+//                .setMessage(message)
+//                .setCancelable(false).setCancelable(false);
+//                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//                    public void onClick(DialogInterface dialog, int id) {
+//                        //this for skip dialog
+//                        dialog.cancel();
+//                    }
+//                });
+//        final AlertDialog alertDialog = builder.create();
+//        alertDialog.show();
+//        new Handler().postDelayed(() -> {
+//            if (alertDialog.isShowing()){
+//                alertDialog.dismiss();
+//            }
+//        }, 2000);
     }
 }
