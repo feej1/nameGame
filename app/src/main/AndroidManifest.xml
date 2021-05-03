@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.thenamegame">
+    package="com.example.TaskFailedNameGame">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <application
@@ -10,17 +10,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheNameGAme">
-        <activity android:name=".MainMenuActivity">
+        <activity android:name="com.example.TaskFailedNameGame.MainMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".LeaderBoardActivity">
-
-        </activity>
+        <activity android:name=".FormTypeActivity"/>
+        <activity android:name="com.example.TaskFailedNameGame.GoogleLoginActivity"/>
+        <activity android:name="com.example.TaskFailedNameGame.LeaderBoardActivity"/>
+        <activity android:name="com.example.TaskFailedNameGame.NameGameActivity"/>
+        <activity android:name="com.example.TaskFailedNameGame.UserResultActivity"/>
+        <activity android:name="com.example.TaskFailedNameGame.ChallengeActivity"/>
+        <activity android:name=".PerformanceDisplayActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

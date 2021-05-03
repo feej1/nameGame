@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.TaskFailedNameGame.Retro.Retro;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
@@ -24,6 +25,8 @@ import java.util.concurrent.FutureTask;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import retrofit2.http.GET;
+
 
 /**
  * this class displays the leaderboards
@@ -61,7 +64,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     }
 
     private void fillTopThree(){
-        System.out.println("---------------------------------size ---------------     : " + topUsersAndScores.size());
+        //System.out.println("---------------------------------size ---------------     : " + topUsersAndScores.size());
         TextView first = findViewById(R.id.first);
         TextView second = findViewById(R.id.second);
         TextView third = findViewById(R.id.third);
