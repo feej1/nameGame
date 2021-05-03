@@ -21,7 +21,6 @@ public class FormTypeActivity extends AppCompatActivity {
 
     boolean click = false;
     boolean form1buttonispressed = false;
-    boolean form2buttonispressed = false;
     public float difficulty = 0;
     RatingBar starDifficulty;
 
@@ -60,6 +59,7 @@ public class FormTypeActivity extends AppCompatActivity {
                 switch ((int) difficulty) {
                     case 0:
                         launchGameButton.setVisibility(View.INVISIBLE);
+                        difficulty = 1;
                     case 1:
                         difficulty = 1;
                         if (click){
@@ -126,7 +126,7 @@ public class FormTypeActivity extends AppCompatActivity {
         if(difficulty >= 1) {
             launchGameButton.setVisibility(View.VISIBLE); }
         click = true;
-
+        form1buttonispressed = false;
     }
 
     public void setUpMixedForm(View view) {
