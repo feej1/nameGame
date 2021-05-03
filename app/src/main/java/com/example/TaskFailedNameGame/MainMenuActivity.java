@@ -1,4 +1,4 @@
-package com.example.thenamegame;
+package com.example.TaskFailedNameGame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.TaskFailedNameGame.Retro.RetroDataRunner;
+import com.example.TaskFailedNameGame.Retro.RetroQuestionRunner;
+
+/**
+ * @author Ian
+ */
 public class MainMenuActivity extends AppCompatActivity {
 
 
@@ -13,36 +19,32 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        getSupportActionBar().hide();
 
-        // Main menu title type writer
-        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_title);
+        // Type writer
+        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_mainMenu);
         tw.setText("");
         tw.setCharacterDelay(400);
         tw.animateText("THE NAME GAME.");
+
+        // starts all retro runners
+        RetroQuestionRunner.getOneNameInstance(0).start();
+        RetroQuestionRunner.getOneYearInstance(0).start();
     }
 
-    /**
-     * @param view
-     * @author Ian Olds
-     */
+
     public void switchToFormType(View view){
         Intent intent = new Intent(this, FormTypeActivity.class);
         startActivity(intent);
     }
 
-    /**
-     * @param view
-     * @author Ian Olds
-     */
+
     public void switchToLeaderBoard(View view){
         Intent intent = new Intent(this, LeaderBoardActivity.class);
         startActivity(intent);
     }
 
-    /**
-     * @param view
-     * @author Ian Olds
-     */
+
     public void switchToGoogleLogin(View view){
         Intent intent = new Intent(this, GoogleLoginActivity.class);
         startActivity(intent);
