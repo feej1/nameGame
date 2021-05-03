@@ -2,6 +2,7 @@ package com.example.TaskFailedNameGame;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -20,7 +21,6 @@ import java.util.List;
  */
 public class NameGameActivity extends AppCompatActivity {
 
-    TextView questionText;
     List<TextView> answerViews = new ArrayList<>();
     QuestionHandler questionHandler;
 
@@ -31,10 +31,17 @@ public class NameGameActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
         Intent intent = getIntent();
-        if(intent.getBooleanExtra("FormType1", true)){
-            questionHandler = new QuestionHandler(RetroQuestionRunner.getOneNameInstance());
-        }else{
-            questionHandler = new QuestionHandler(RetroQuestionRunner.getOneYearInstance());
+        Log.d("NameGame","FormType is " + intent.getIntExtra("FormType", 3));
+        switch (intent.getIntExtra("FormType", 3)){
+            case 1:
+                questionHandler = new QuestionHandler(RetroQuestionRunner.getOneNameInstance());
+                break;
+            case 2:
+                questionHandler = new QuestionHandler(RetroQuestionRunner.getOneYearInstance());
+                break;
+            default:
+                questionHandler = new QuestionHandler(RetroQuestionRunner.getOneNameInstance());
+                break;
         }
 
         findAllViewsByID();
@@ -51,20 +58,24 @@ public class NameGameActivity extends AppCompatActivity {
 
     private void populateQuestionAndAnswers(){
         if(!questionHandler.getNewQuestion()){
-            Intent intent = new Intent(this, MainMenuActivity.class);
+            Log.d("NameGame", "DONE numeber of questions: " + questionHandler.getQuestionNumber());
+            Intent intent = new Intent(this, PerformanceDisplayActivity.class);
+            intent.putExtra("questionSet", questionHandler.getQuestionSet());
+            intent.putExtra("numberCorrect", questionHandler.totalRight);
             startActivity(intent);
-        }
+        }else {
 
-        // Type writer
-        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_nameGame);
-        tw.setText("");
-        tw.setCharacterDelay(50);
-        tw.animateText(questionHandler.getQuestion());
+            // Type writer
+            final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_performance);
+            tw.setText("");
+            tw.setCharacterDelay(50);
+            tw.animateText(questionHandler.getQuestion());
 
-        List<String> allAnswers = questionHandler.getAllAnswers();
-        Collections.shuffle(allAnswers);
-        for(int i = 0; i < 5; i++){
-            answerViews.get(i).setText(allAnswers.get(i));
+            List<String> allAnswers = questionHandler.getAllAnswers();
+            Collections.shuffle(allAnswers);
+            for (int i = 0; i < 5; i++) {
+                answerViews.get(i).setText(allAnswers.get(i));
+            }
         }
     }
 

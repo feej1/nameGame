@@ -8,7 +8,7 @@ public class RetroQuestionRunner {
     private Thread thread;
 
     private boolean started = false;
-    private RetroRunnable retroRunnable;
+    private RetroQuestionRunnable retroQuestionRunnable;
 
     private static RetroQuestionRunner oneNameInstance;
     private static RetroQuestionRunner oneYearInstance;
@@ -19,10 +19,10 @@ public class RetroQuestionRunner {
     public static RetroQuestionRunner getOneNameInstance(){
         if (oneNameInstance == null) {
             try {
-                oneNameInstance = new RetroQuestionRunner(new oneNameMultipleYearsRetro());
+                oneNameInstance = new RetroQuestionRunner(new OneNameMultipleYearsRetro());
                 System.out.println("returning a NAME RUNNER");
             } catch (Exception exc) {
-                System.out.println("RUNNER DOES NOT ESIST--------------");
+                System.out.println("RUNNER FAILED TO BE CREATED--------------");
             }
         }
         return oneNameInstance;
@@ -34,7 +34,7 @@ public class RetroQuestionRunner {
     public static RetroQuestionRunner getOneYearInstance(){
         if (oneYearInstance == null) {
             try {
-                oneYearInstance = new RetroQuestionRunner(new oneYearMultipleNamesRetro());
+                oneYearInstance = new RetroQuestionRunner(new OneYearMultipleNamesRetro());
                 System.out.println("returning a YEAR RUNNER");
             } catch (Exception exc) {
                 System.out.println("RUNNER DOES NOT ESIST--------------");
@@ -43,26 +43,31 @@ public class RetroQuestionRunner {
         return oneYearInstance;
     }
 
-    public RetroQuestionRunner(RetroRunnable retroRunnable){
-        this.retroRunnable = retroRunnable;
+
+    public RetroQuestionRunner(RetroQuestionRunnable retroQuestionRunnable){
+        this.retroQuestionRunnable = retroQuestionRunnable;
     }
 
     public void start(){
-        Log.d("RetroQuestionRunner", "Starting...");
-        thread = new Thread(retroRunnable);
-        thread.start();
-        started = true;
+        if(!started) {
+            Log.d("RetroQuestionRunner", "Starting...");
+            thread = new Thread(retroQuestionRunnable);
+            thread.start();
+            started = true;
+        }else{
+            Log.d("RetroQuestionRunner", "Already Started");
+        }
     }
 
     public Question getOneQuestion() {
-        return retroRunnable.getOneQuestion();
+        return retroQuestionRunnable.getOneQuestion();
     }
 
     private void stop(){
-        if(retroRunnable != null){
-            retroRunnable.stop();
+        if(retroQuestionRunnable != null){
+            retroQuestionRunnable.stop();
         }
-        retroRunnable = null;
+        retroQuestionRunnable = null;
         thread = null;
         started = false;
     }
@@ -71,6 +76,6 @@ public class RetroQuestionRunner {
     }
 
     public void printAllQuestions(){
-        retroRunnable.printAllQuestions();
+        retroQuestionRunnable.printAllQuestions();
     }
 }

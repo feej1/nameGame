@@ -23,6 +23,7 @@
         <activity android:name="com.example.TaskFailedNameGame.NameGameActivity"/>
         <activity android:name="com.example.TaskFailedNameGame.UserResultActivity"/>
         <activity android:name="com.example.TaskFailedNameGame.ChallengeActivity"/>
+        <activity android:name=".PerformanceDisplayActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
