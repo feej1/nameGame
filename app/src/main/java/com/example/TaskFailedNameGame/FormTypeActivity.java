@@ -20,6 +20,8 @@ public class FormTypeActivity extends AppCompatActivity {
     //Beginning work on 5 stars
 
     boolean click = false;
+    boolean form1buttonispressed = false;
+    boolean form2buttonispressed = false;
     public float difficulty = 0;
     RatingBar starDifficulty;
 
@@ -90,37 +92,15 @@ public class FormTypeActivity extends AppCompatActivity {
     }
 
     public void playSetUp(View view) {
-        Button form1button = (Button) findViewById(R.id.form1button);
-        Button form2button = (Button) findViewById(R.id.form2button);
-        Button multiplayerButton = (Button) findViewById(R.id.multiplayerButton);
-        Button launchGameButton = (Button) findViewById(R.id.launchGameButton);
+    if (form1buttonispressed) {
+    Intent intent = new Intent(this, NameGameActivity.class);
+    intent.putExtra("FormType", 1);
+    startActivity(intent); }
 
-
-        if (form1button.isPressed() == true) {
-            //pass on Difficulty 1-5
-        } else if (form2button.isPressed() == true) {
-            //pass on Difficulty 1-5
-        } else {
-            //mixedformbutton.isPressed() == true
-            //and therefore should prep mixed form 1 and 2 questions
-            //pass on Difficulty 1-5
-        }
-
-        if (multiplayerButton.isPressed() == true) {
-            Intent intent = new Intent(this, ChallengeActivity.class);
-            startActivity(intent);
-            //pass on Difficulty 1-5
-        } else {
-            Intent intent = new Intent(this, NameGameActivity.class);
-            if (form1button.isPressed()) {
-                intent.putExtra("FormType1", true);
-            } else if (form2button.isPressed()) {
-                intent.putExtra("FormType1", false);
-            }
-            startActivity(intent);
-            //pass on Difficulty 1-5
-
-        }
+   else {
+        Intent intent = new Intent(this, NameGameActivity.class);
+        intent.putExtra("FormType", 2);
+        startActivity(intent); }
     }
 
     public void setUpForm1(View view) {
@@ -131,9 +111,9 @@ public class FormTypeActivity extends AppCompatActivity {
         form2button.setBackgroundColor(Color.parseColor("#2196F3"));
         mixformbutton.setBackgroundColor(Color.parseColor("#2196F3"));
         if(difficulty >= 1) {
-            launchGameButton.setVisibility(View.VISIBLE);
-        }
+            launchGameButton.setVisibility(View.VISIBLE); }
         click = true;
+        form1buttonispressed = true;
     }
 
     public void setUpForm2(View view) {
@@ -144,9 +124,9 @@ public class FormTypeActivity extends AppCompatActivity {
         form2button.setBackgroundColor(Color.parseColor("#135a91"));
         mixformbutton.setBackgroundColor(Color.parseColor("#2196F3"));
         if(difficulty >= 1) {
-            launchGameButton.setVisibility(View.VISIBLE);
-        }
+            launchGameButton.setVisibility(View.VISIBLE); }
         click = true;
+
     }
 
     public void setUpMixedForm(View view) {
