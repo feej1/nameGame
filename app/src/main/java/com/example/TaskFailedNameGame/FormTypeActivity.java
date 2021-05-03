@@ -83,10 +83,10 @@ public class FormTypeActivity extends AppCompatActivity {
         } else {
             Intent intent = new Intent(this, NameGameActivity.class);
             if (form1button.isPressed()){
-                intent.putExtra("FormType1", true);
+                intent.putExtra("FormType", 1); //tells namegame to do formtype 1
             }
             else if(form2button.isPressed()){
-                intent.putExtra("FormType1", false);
+                intent.putExtra("FormType", 2); //tells namegame to do formtype 2
             }
             startActivity(intent);
             //pass on Difficulty 1-5
@@ -95,6 +95,10 @@ public class FormTypeActivity extends AppCompatActivity {
     }
 
     public void setUpForm1(View view) {
+
+        //Ian's shitty test code: PLEASE DELETE
+        Intent intent = new Intent(this, NameGameActivity.class);
+        intent.putExtra("FormType", 1); //tells namegame to do formtype 1
         Button form1button = (Button) findViewById(R.id.form1button);
         Button form2button = (Button) findViewById(R.id.form2button);
         Button mixformbutton = (Button) findViewById(R.id.mixformbutton);

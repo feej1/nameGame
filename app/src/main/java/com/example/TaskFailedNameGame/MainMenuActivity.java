@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.TaskFailedNameGame.Retro.RetroDataRunner;
 import com.example.TaskFailedNameGame.Retro.RetroQuestionRunner;
 
 /**
@@ -26,8 +27,9 @@ public class MainMenuActivity extends AppCompatActivity {
         tw.setCharacterDelay(400);
         tw.animateText("THE NAME GAME.");
 
+        // starts all retro runners
         RetroQuestionRunner.getOneNameInstance().start();
-        //RetroQuestionRunner.getOneYearInstance().start();
+        RetroQuestionRunner.getOneYearInstance().start();
     }
 
 
