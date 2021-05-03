@@ -27,7 +27,6 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
         Intent intent = getIntent();
 
         questionSet = (QuestionSet) intent.getSerializableExtra("questionSet");
-        numberCorrect = intent.getIntExtra("numberCorrect", 0);
 
         if(questionSet == null){
             questionSet = new QuestionSet();
@@ -57,22 +56,28 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
         final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_performance);
         tw.setText("");
         tw.setCharacterDelay(50);
-        tw.animateText("Performance!");
+        if(questionSet.getNumCorrect() < 4){
+            tw.animateText("You Can Do It!");
+        } else if(questionSet.getNumCorrect() < 8){
+            tw.animateText("Good Job!");
+        }else {
+            tw.animateText("OUTSTANDING WORK!");
+        }
 
         final TypeWriter tw2 = (TypeWriter) findViewById(R.id.typeWriter_percent);
         tw2.setText("");
         tw2.setCharacterDelay(100);
-        tw2.animateText("2\n-\n10");
+        tw2.animateText( questionSet.getNumCorrect() + "\n-\n10");
 
         Log.d("Performance", "number of q's: " + questionSet.getNumberOfQuestions());
 
         for(int i = 0; i < 10; i++){
             Question question = questionSet.getQuestion(i);
             if(question.isCorrect()){
-                performanceViews.get(i).setText("Correct!\nYou Answered: " + question.getChosenAnswer());
+                performanceViews.get(i).setText("Correct!\n" + question.getQuestion() + "\n\nYou Answered: " + question.getChosenAnswer());
             }else{
                 performanceViews.get(i).setBackgroundColor(Color.RED);
-                performanceViews.get(i).setText("Incorrect\nCorrect Answer Was: " + question.getAnswer() + "\nYou Answered: " + question.getChosenAnswer());
+                performanceViews.get(i).setText("Incorrect\n" + question.getQuestion() + "\n\nCorrect Answer Was: " + question.getAnswer() + "\nYou Answered: " + question.getChosenAnswer());
             }
         }
     }

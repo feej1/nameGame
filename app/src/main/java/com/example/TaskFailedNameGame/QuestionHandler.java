@@ -18,13 +18,11 @@ public class QuestionHandler {
     private Question currQuestion;
     private QuestionSet questionSet;
 
-    int totalRight;
     RetroQuestionRunner retroQuestionRunner;
 
     public QuestionHandler(RetroQuestionRunner retroQuestionRunnerInstance){
         currQuestion = null;
         questionNumber = 0;
-        totalRight = 0;
         retroQuestionRunner = retroQuestionRunnerInstance;
         questionSet = new QuestionSet();
     }
@@ -50,11 +48,7 @@ public class QuestionHandler {
     }
 
     public boolean submit(String s) {
-        boolean correct = currQuestion.setChosenAnswer(s);
-        if(correct){
-            totalRight++;
-        }
-        return correct;
+        return currQuestion.setChosenAnswer(s);
     }
     private boolean atEnd(){
         return !(questionNumber <= 9);
@@ -88,4 +82,7 @@ public class QuestionHandler {
         return questionSet;
     }
 
+    public int getNumberCorrect(){
+        return questionSet.getNumCorrect();
+    }
 }

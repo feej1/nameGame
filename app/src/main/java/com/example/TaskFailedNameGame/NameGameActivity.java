@@ -62,7 +62,6 @@ public class NameGameActivity extends AppCompatActivity {
             Log.d("NameGame", "DONE numeber of questions: " + questionHandler.getQuestionNumber());
             Intent intent = new Intent(this, PerformanceDisplayActivity.class);
             intent.putExtra("questionSet", questionHandler.getQuestionSet());
-            intent.putExtra("numberCorrect", questionHandler.totalRight);
             startActivity(intent);
         }else {
 
