@@ -9,14 +9,22 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.TaskFailedNameGame.Retro.Retro;
+import com.google.gson.JsonObject;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 public class PerformanceDisplayActivity extends AppCompatActivity {
 
     private List<Button> performanceViews = new ArrayList<>();
-    QuestionSet questionSet;
-    int numberCorrect;
+    private QuestionSet questionSet;
+    private boolean dataSent = false;
+    private boolean sendingData = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,7 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
+        dataSent = false;
         questionSet = (QuestionSet) intent.getSerializableExtra("questionSet");
 
         if(questionSet == null){
@@ -87,12 +96,43 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
     }
 
     public void playAgainClicked(View view){
+        sendDataToDB();
         Intent intent = new Intent(this, FormTypeActivity.class);
         startActivity(intent);
     }
 
     public void mainMenuClicked(View view){
+        sendDataToDB();
         Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
+    }
+
+    private void sendDataToDB(){
+        if(!sendingData && !dataSent) {
+            Retro retroInterface = Retro.retro.create(Retro.class);
+            try {
+                sendingData = true;
+                JsonObject payload = new JsonObject();
+                payload.addProperty("user", "TestUser");
+                payload.addProperty("questionsAnswered", questionSet.getNumCorrect());
+                Call<JsonObject> call = retroInterface.updateLeaderBoard(payload);
+                call.enqueue(new Callback<JsonObject>() {
+                    @Override
+                    public void onResponse(Call<JsonObject> call, retrofit2.Response<JsonObject> response) {
+                        Log.d("Performance: ", "Success | " + response.message());
+                        dataSent = true;
+                        sendingData = false;
+                    }
+
+                    @Override
+                    public void onFailure(Call<JsonObject> call, Throwable t) {
+                        Log.d("Performance", "Failed | " + t.toString());
+                        sendingData = false;
+                    }
+                });
+            } catch (Exception e) {
+
+            }
+        }
     }
 }
