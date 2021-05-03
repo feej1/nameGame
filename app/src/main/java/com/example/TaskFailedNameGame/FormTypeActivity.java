@@ -1,9 +1,12 @@
 package com.example.TaskFailedNameGame;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Button;
 import android.widget.RatingBar.OnRatingBarChangeListener;
@@ -24,7 +27,13 @@ public class FormTypeActivity extends AppCompatActivity {
     public float difficulty = 0;
     RatingBar starDifficulty;
 
-    private Button form1button, form2button,mixformbutton,singleplayerButton,multiplayerButton, launchGameButton;
+    private Button form1button;
+    private Button form2button;
+    private Button mixformbutton;
+    private Button singleplayerButton;
+    private Button multiplayerButton;
+    private Button launchGameButton;
+    private ImageButton shuffleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +46,14 @@ public class FormTypeActivity extends AppCompatActivity {
         singleplayerButton = (Button) findViewById(R.id.singleplayerButton);
         multiplayerButton = (Button) findViewById(R.id.multiplayerButton);
         launchGameButton = (Button) findViewById(R.id.launchGameButton);
+        shuffleButton = (ImageButton) findViewById(R.id.shuffleDifficultyButton);
+
+        shuffleButton.setColorFilter(Color.parseColor("#ffffff"));
 
         starDifficulty = findViewById(R.id.stars);
         getSupportActionBar().hide();
 
-        launchGameButton.setVisibility(View.INVISIBLE);
+        setPlayButtonEnabled(false);
 
         // Type writer
         final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_formType);
@@ -56,34 +68,41 @@ public class FormTypeActivity extends AppCompatActivity {
                 difficulty = (int) v;
                 difficulty = stars.getRating();
 
+                shuffleButton.setColorFilter(Color.parseColor("#ffffff"));
+
                 switch ((int) difficulty) {
                     case 0:
-                        launchGameButton.setVisibility(View.INVISIBLE);
+                        setPlayButtonEnabled(false);
                         difficulty = 1;
                     case 1:
                         difficulty = 1;
-                        if (click){
-                            launchGameButton.setVisibility(View.VISIBLE); }
+                        if (click) {
+                            setPlayButtonEnabled(true);
+                        }
                         break;
                     case 2:
                         difficulty = 2;
-                        if (click){
-                            launchGameButton.setVisibility(View.VISIBLE); }
+                        if (click) {
+                            setPlayButtonEnabled(true);
+                        }
                         break;
                     case 3:
                         difficulty = 3;
-                        if (click){
-                            launchGameButton.setVisibility(View.VISIBLE); }
+                        if (click) {
+                            setPlayButtonEnabled(true);
+                        }
                         break;
                     case 4:
                         difficulty = 4;
-                        if (click){
-                            launchGameButton.setVisibility(View.VISIBLE); }
+                        if (click) {
+                            setPlayButtonEnabled(true);
+                        }
                         break;
                     case 5:
                         difficulty = 5;
-                        if (click){
-                            launchGameButton.setVisibility(View.VISIBLE);}
+                        if (click) {
+                            setPlayButtonEnabled(true);
+                        }
                         break;
                 }
             }
@@ -91,16 +110,24 @@ public class FormTypeActivity extends AppCompatActivity {
 
     }
 
-    public void playSetUp(View view) {
-    if (form1buttonispressed) {
-    Intent intent = new Intent(this, NameGameActivity.class);
-    intent.putExtra("FormType", 1);
-    startActivity(intent); }
+    public void setPlayButtonEnabled(boolean enabled) {
+        launchGameButton.setEnabled(enabled);
+        if (enabled)
+            launchGameButton.setBackgroundColor(Color.parseColor("#4CAF50"));
+        else
+            launchGameButton.setBackgroundColor(Color.parseColor("#D8D8D8"));
+    }
 
-   else {
-        Intent intent = new Intent(this, NameGameActivity.class);
-        intent.putExtra("FormType", 2);
-        startActivity(intent); }
+    public void playSetUp(View view) {
+        if (form1buttonispressed) {
+            Intent intent = new Intent(this, NameGameActivity.class);
+            intent.putExtra("FormType", 1);
+            startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, NameGameActivity.class);
+            intent.putExtra("FormType", 2);
+            startActivity(intent);
+        }
     }
 
     public void setUpForm1(View view) {
@@ -110,8 +137,9 @@ public class FormTypeActivity extends AppCompatActivity {
         form1button.setBackgroundColor(Color.parseColor("#135a91"));
         form2button.setBackgroundColor(Color.parseColor("#2196F3"));
         mixformbutton.setBackgroundColor(Color.parseColor("#2196F3"));
-        if(difficulty >= 1) {
-            launchGameButton.setVisibility(View.VISIBLE); }
+        if (difficulty >= 1) {
+            setPlayButtonEnabled(true);
+        }
         click = true;
         form1buttonispressed = true;
     }
@@ -123,8 +151,9 @@ public class FormTypeActivity extends AppCompatActivity {
         form1button.setBackgroundColor(Color.parseColor("#2196F3"));
         form2button.setBackgroundColor(Color.parseColor("#135a91"));
         mixformbutton.setBackgroundColor(Color.parseColor("#2196F3"));
-        if(difficulty >= 1) {
-            launchGameButton.setVisibility(View.VISIBLE); }
+        if (difficulty >= 1) {
+            setPlayButtonEnabled(true);
+        }
         click = true;
         form1buttonispressed = false;
     }
@@ -153,5 +182,9 @@ public class FormTypeActivity extends AppCompatActivity {
         multiplayerButton.setBackgroundColor(Color.parseColor("#2196F3"));
     }
 
-
+    public void shuffleButtonPressed(View view) {
+        starDifficulty.setRating(0);
+        shuffleButton.setColorFilter(Color.parseColor("#04DAC5"));
+        setPlayButtonEnabled(true);
+    }
 }
