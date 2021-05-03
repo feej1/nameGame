@@ -1,8 +1,13 @@
 package com.example.thenamegame;
 
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,6 +33,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
     Retro interfaceName = Retro.retro.create(Retro.class);
     List<List<String>> topUsersAndScores;
     Asynch loadTask;
+    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +41,60 @@ public class LeaderBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_leaderboard);
         topUsersAndScores = new ArrayList<>();
         loadTask = new Asynch();
-       // fillTopThree();
+
     }
 
 
+    private void makeTextviews (){
+        for (int i = 3; i < topUsersAndScores.size(); i++){
+            final String usr = topUsersAndScores.get(i).get(0);
+            final String num = topUsersAndScores.get(i).get(1);
+            final TextView view = new TextView(LeaderBoardActivity.this);
+            view.setText(usr + " : " + num );
+            //newBut.setBackgroundColor(ContextCompat.getColor(context, R.color.colorMaroon));
+            view.setLayoutParams(layoutParams);
+            //view.setTextColor(Color.parseColor("#ffffff")); //set text white
+            view.setPadding(35 , 35, 35, 35);
+            view.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+            view.setAllCaps(false);
+        }
+    }
+
     private void fillTopThree(){
+        System.out.println("---------------------------------size ---------------     : " + topUsersAndScores.size());
         TextView first = findViewById(R.id.first);
         TextView second = findViewById(R.id.second);
         TextView third = findViewById(R.id.third);
-        //System.out.println(topUsersAndScores.isEmpty() + "-------------------------------------------------------------------------");
-        first.setText(topUsersAndScores.get(0).get(0));
-        second.setText(topUsersAndScores.get(1).get(0));
-        third.setText(topUsersAndScores.get(2).get(0));
+        if(topUsersAndScores.size()>3){
+             makeTextviews();
+        }
+        else if (topUsersAndScores.size()==3) {
+            first.setText(topUsersAndScores.get(0).get(0));
+            second.setText(topUsersAndScores.get(1).get(0));
+            third.setText(topUsersAndScores.get(2).get(0));
+        }
+        else if (topUsersAndScores.size()==2){
+            first.setText(topUsersAndScores.get(0).get(0));
+            second.setText(topUsersAndScores.get(1).get(0));
+            findViewById(R.id.third).setVisibility(View.INVISIBLE);
+            findViewById(R.id.textView8).setVisibility(View.INVISIBLE);
+        }
+        else if (topUsersAndScores.size()==1){
+            first.setText(topUsersAndScores.get(0).get(0));
+            findViewById(R.id.second).setVisibility(View.INVISIBLE);
+            findViewById(R.id.textView9).setVisibility(View.INVISIBLE);
+            findViewById(R.id.third).setVisibility(View.INVISIBLE);
+            findViewById(R.id.textView8).setVisibility(View.INVISIBLE);
+        }
+        else{
+            findViewById(R.id.first).setVisibility(View.INVISIBLE);
+            findViewById(R.id.textView).setVisibility(View.INVISIBLE);
+            findViewById(R.id.second).setVisibility(View.INVISIBLE);
+            findViewById(R.id.textView9).setVisibility(View.INVISIBLE);
+            findViewById(R.id.third).setVisibility(View.INVISIBLE);
+            findViewById(R.id.textView8).setVisibility(View.INVISIBLE);
+            findViewById(R.id.textView3).setVisibility(View.VISIBLE);
+        }
     }
 
 
@@ -90,8 +138,8 @@ public class LeaderBoardActivity extends AppCompatActivity {
                             //System.out.println(response.body().toString());
                             filltopList(response.body());
                         }
-                        fillTopThree();
                         makeViewsVis();
+                        fillTopThree();
                     } //ends overiddden method
                     @Override
                     public void onFailure(Call<JsonArray> call, Throwable t) {
