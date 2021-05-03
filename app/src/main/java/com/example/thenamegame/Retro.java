@@ -24,6 +24,9 @@ public interface Retro {
     @GET("getOneYearMultipleNames")
     Call<JsonObject> getOneYearMultipleNames();
 
+    @GET("GetLeaderboard")
+    Call<JsonArray> getLeading();
+
     /*
     Example from TechPrep
      */
