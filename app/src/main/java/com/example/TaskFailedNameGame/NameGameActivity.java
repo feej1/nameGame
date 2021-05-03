@@ -74,7 +74,7 @@ public class NameGameActivity extends AppCompatActivity {
 
             List<String> allAnswers = questionHandler.getAllAnswers();
             Collections.shuffle(allAnswers);
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < allAnswers.size(); i++) {
                 answerViews.get(i).setText(allAnswers.get(i));
             }
         }
