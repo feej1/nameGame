@@ -108,12 +108,15 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
     }
 
     private void sendDataToDB(){
-        if(!sendingData && !dataSent) {
+        String displayName = MainMenuActivity.getDisplayName();
+        if(!sendingData && !dataSent && displayName != null) {
             Retro retroInterface = Retro.retro.create(Retro.class);
+
             try {
                 sendingData = true;
                 JsonObject payload = new JsonObject();
-                payload.addProperty("user", "TestUser");
+
+                payload.addProperty("user", displayName);
                 payload.addProperty("questionsAnswered", questionSet.getNumCorrect());
                 Call<JsonObject> call = retroInterface.updateLeaderBoard(payload);
                 call.enqueue(new Callback<JsonObject>() {

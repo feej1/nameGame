@@ -117,8 +117,11 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public GoogleSignInAccount getAccount(){
-        return signedInUser;
+    public static String getDisplayName(){
+        if(signedInUser != null){
+            return signedInUser.getDisplayName();
+        }
+        return null;
     }
 
     public void switchToGoogleLogin(View view){
