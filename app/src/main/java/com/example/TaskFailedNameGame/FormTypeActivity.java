@@ -33,7 +33,6 @@ public class FormTypeActivity extends AppCompatActivity {
 
         form1button = (Button) findViewById(R.id.form1button);
         form2button = (Button) findViewById(R.id.form2button);
-        mixformbutton = (Button) findViewById(R.id.mixformbutton);
         singleplayerButton = (Button) findViewById(R.id.singleplayerButton);
         multiplayerButton = (Button) findViewById(R.id.multiplayerButton);
         launchGameButton = (Button) findViewById(R.id.launchGameButton);
@@ -52,7 +51,6 @@ public class FormTypeActivity extends AppCompatActivity {
         starDifficulty.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar stars, float v, boolean fromUser) {
-
                 difficulty = (int) v;
                 difficulty = stars.getRating();
 
