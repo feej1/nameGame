@@ -28,8 +28,8 @@ public class MainMenuActivity extends AppCompatActivity {
         tw.animateText("THE NAME GAME.");
 
         // starts all retro runners
-        RetroQuestionRunner.getOneNameInstance().start();
-        RetroQuestionRunner.getOneYearInstance().start();
+        RetroQuestionRunner.getOneNameInstance(0).start();
+        RetroQuestionRunner.getOneYearInstance(0).start();
     }
 
 

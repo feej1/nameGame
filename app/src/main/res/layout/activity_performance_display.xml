@@ -8,17 +8,22 @@
 
     <com.example.TaskFailedNameGame.TypeWriter
         android:id="@+id/typeWriter_percent"
-        android:layout_width="323dp"
-        android:layout_height="116dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
         android:fontFamily="@font/special_elite"
         android:gravity="center"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.181" />
 
     <com.example.TaskFailedNameGame.TypeWriter
         android:id="@+id/typeWriter_performance"
@@ -35,16 +40,20 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.04" />
+        app:layout_constraintVertical_bias="0.065" />
 
     <ScrollView
         android:id="@+id/questionsScrollView"
-        android:layout_width="375dp"
-        android:layout_height="253dp"
-        android:layout_marginTop="13dp"
+        android:layout_width="0dp"
+        android:layout_height="340dp"
+        android:layout_marginTop="16dp"
+        android:background="#B3B3B3"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/typeWriter_percent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.545">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -56,10 +65,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
             <Button
                 android:id="@+id/question2"
@@ -67,9 +78,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
             <Button
                 android:id="@+id/question3"
@@ -77,9 +89,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
             <Button
                 android:id="@+id/question4"
@@ -87,9 +100,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
             <Button
                 android:id="@+id/question5"
@@ -97,9 +111,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
             <Button
                 android:id="@+id/question6"
@@ -107,9 +122,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
             <Button
                 android:id="@+id/question7"
@@ -117,9 +133,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
             <Button
                 android:id="@+id/question8"
@@ -127,9 +144,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
             <Button
                 android:id="@+id/question9"
@@ -137,9 +155,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
             <Button
                 android:id="@+id/question10"
@@ -147,9 +166,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
+                android:layout_marginBottom="20dp"
                 android:clickable="false"
                 android:onClick="performDisplayClicked"
-                app:backgroundTint="#32CD32" />
+                app:backgroundTint="#4CAF50" />
 
         </LinearLayout>
     </ScrollView>
@@ -159,14 +179,14 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="70dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
         android:onClick="playAgainClicked"
         android:text="Play Again"
+        app:layout_constraintBottom_toTopOf="@+id/mainMenuButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/questionsScrollView" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/mainMenuButton"
@@ -174,13 +194,32 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
         android:onClick="mainMenuClicked"
         android:text="Main Menu"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/questionsScrollView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/playAgainButton" />
+        app:layout_constraintTop_toBottomOf="@+id/questionsScrollView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
