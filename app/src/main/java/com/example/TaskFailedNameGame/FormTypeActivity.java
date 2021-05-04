@@ -29,7 +29,6 @@ public class FormTypeActivity extends AppCompatActivity {
 
     private Button form1button;
     private Button form2button;
-    private Button mixformbutton;
     private Button singleplayerButton;
     private Button multiplayerButton;
     private Button launchGameButton;
@@ -131,10 +130,8 @@ public class FormTypeActivity extends AppCompatActivity {
     public void setUpForm1(View view) {
         form1button.setClickable(false);
         form2button.setClickable(true);
-        mixformbutton.setClickable(true);
         form1button.setBackgroundColor(Color.parseColor("#135a91"));
         form2button.setBackgroundColor(Color.parseColor("#2196F3"));
-        mixformbutton.setBackgroundColor(Color.parseColor("#2196F3"));
         if (difficulty >= 1) {
             setPlayButtonEnabled(true);
         }
@@ -145,24 +142,13 @@ public class FormTypeActivity extends AppCompatActivity {
     public void setUpForm2(View view) {
         form1button.setClickable(true);
         form2button.setClickable(false);
-        mixformbutton.setClickable(true);
         form1button.setBackgroundColor(Color.parseColor("#2196F3"));
         form2button.setBackgroundColor(Color.parseColor("#135a91"));
-        mixformbutton.setBackgroundColor(Color.parseColor("#2196F3"));
         if (difficulty >= 1) {
             setPlayButtonEnabled(true);
         }
         click = true;
         form1buttonispressed = false;
-    }
-
-    public void setUpMixedForm(View view) {
-        form1button.setClickable(true);
-        form2button.setClickable(true);
-        mixformbutton.setClickable(false);
-        form1button.setBackgroundColor(Color.parseColor("#2196F3"));
-        form2button.setBackgroundColor(Color.parseColor("#2196F3"));
-        mixformbutton.setBackgroundColor(Color.parseColor("#135a91"));
     }
 
     public void setUpMultiplayerButton(View view) {
