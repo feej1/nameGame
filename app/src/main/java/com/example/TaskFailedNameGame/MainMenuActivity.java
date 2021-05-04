@@ -25,15 +25,15 @@ public class MainMenuActivity extends AppCompatActivity {
 
     private static final int RC_SIGN_IN = 00000;
     //    FirebaseAuth mAuth;
-GoogleSignInClient mGoogleSignInClient;
-
+    GoogleSignInClient mGoogleSignInClient;
+    private static GoogleSignInAccount signedInUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         getSupportActionBar().hide();
-
+        signedInUser =null;
         // Type writer
         final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_mainMenu);
         tw.setText("");
@@ -66,6 +66,7 @@ GoogleSignInClient mGoogleSignInClient;
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
         GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
 //        updateUI(account);
     }
 
@@ -116,6 +117,9 @@ GoogleSignInClient mGoogleSignInClient;
         startActivity(intent);
     }
 
+    public GoogleSignInAccount getAccount(){
+        return signedInUser;
+    }
 
     public void switchToGoogleLogin(View view){
 //        Intent intent = new Intent(this, GoogleLoginActivity.class);
