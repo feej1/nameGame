@@ -11,7 +11,7 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="24dp"
         android:fontFamily="sans-serif"
         android:text="TOP NUMBER OF CORRECT ANSWERS TODAY"
         android:textColor="@android:color/darker_gray"
@@ -85,7 +85,7 @@
 
     <TextView
         android:id="@+id/second"
-        android:layout_width="185dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
@@ -97,7 +97,7 @@
 
     <TextView
         android:id="@+id/first"
-        android:layout_width="185dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
@@ -139,7 +139,7 @@
 
     <TextView
         android:id="@+id/third"
-        android:layout_width="185dp"
+        android:layout_width="210dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
@@ -148,7 +148,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.407" />
+        app:layout_constraintVertical_bias="0.394" />
 
     <TextView
         android:id="@+id/textView8"
@@ -164,7 +164,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/third"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.407" />
+        app:layout_constraintVertical_bias="0.394" />
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -172,10 +172,12 @@
         android:layout_height="0dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"
+        android:background="#FFFFFF"
+        android:foregroundGravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -188,6 +190,7 @@
             android:id="@+id/scrolout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical"></LinearLayout>
     </ScrollView>
 
