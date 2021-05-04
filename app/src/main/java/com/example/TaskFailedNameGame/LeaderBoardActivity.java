@@ -6,6 +6,7 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -55,6 +56,7 @@ public class LeaderBoardActivity extends AppCompatActivity {
 
 
     private void makeTextviews (){
+        ViewGroup layout = findViewById(R.id.scrolout);
         for (int i = 3; i < topUsersAndScores.size(); i++){
             final String usr = topUsersAndScores.get(i).get(0);
             final String num = topUsersAndScores.get(i).get(1);
@@ -66,6 +68,8 @@ public class LeaderBoardActivity extends AppCompatActivity {
             view.setPadding(35 , 35, 35, 35);
             view.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
             view.setAllCaps(false);
+            layout.addView(view);
+
         }
     }
 
@@ -75,6 +79,9 @@ public class LeaderBoardActivity extends AppCompatActivity {
         TextView second = findViewById(R.id.second);
         TextView third = findViewById(R.id.third);
         if(topUsersAndScores.size()>3){
+            first.setText(topUsersAndScores.get(0).get(0));
+            second.setText(topUsersAndScores.get(1).get(0));
+            third.setText(topUsersAndScores.get(2).get(0));
              makeTextviews();
         }
         else if (topUsersAndScores.size()==3) {
