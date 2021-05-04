@@ -23,17 +23,17 @@ import com.google.firebase.auth.FirebaseUser;
  */
 public class MainMenuActivity extends AppCompatActivity {
 
-    private static final int RC_SIGN_IN = 00000;
-    //    FirebaseAuth mAuth;
+    private static final int RC_SIGN_IN = 0;
+
     GoogleSignInClient mGoogleSignInClient;
-    private static GoogleSignInAccount signedInUser;
+    private static GoogleSignInAccount account;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         getSupportActionBar().hide();
-        signedInUser =null;
+        account = null;
         // Type writer
         final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_mainMenu);
         tw.setText("");
@@ -53,24 +53,25 @@ public class MainMenuActivity extends AppCompatActivity {
 
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-
-
-        // Initialize Firebase Auth
-//        mAuth = FirebaseAuth.getInstance();
-
-
     }
+
     @Override
     public void onStart() {
         super.onStart();
         // Check for existing Google Sign In account, if the user is already signed in
         // the GoogleSignInAccount will be non-null.
-        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        account = GoogleSignIn.getLastSignedInAccount(this);
 
-//        updateUI(account);
+        // add a box that shows that we are signed in
+        if(account == null){
+            // button would be enabled
+        } else {
+
+        }
     }
 
-    public void googleOnclick(View v){
+    // Click event handler for the google login button
+    public void googleOnclick(View v) {
         signIn();
     }
 
@@ -97,32 +98,28 @@ public class MainMenuActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-//            updateUI(account);
+            Log.d("googleSignIn", account.getDisplayName() + " logged in successfully");
+            // HERE WOULD BE WHERE YOU WOULD CHANGE UI IF USER LOGGED IN SUCCESSFULLY
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
-//            Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
-//            updateUI(null);
+            Log.w("googleSignIn", "signInResult:failed code=" + e.getStatusCode());
         }
     }
 
-    public void switchToFormType(View view){
+    public void switchToFormType(View view) {
         Intent intent = new Intent(this, FormTypeActivity.class);
         startActivity(intent);
     }
 
 
-    public void switchToLeaderBoard(View view){
+    public void switchToLeaderBoard(View view) {
         Intent intent = new Intent(this, LeaderBoardActivity.class);
         startActivity(intent);
     }
 
-    public GoogleSignInAccount getAccount(){
-        return signedInUser;
+    public GoogleSignInAccount getAccount() {
+        return account;
     }
 
-    public void switchToGoogleLogin(View view){
-//        Intent intent = new Intent(this, GoogleLoginActivity.class);
-//        startActivity(intent);
-    }
 }
