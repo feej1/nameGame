@@ -1,4 +1,4 @@
-package com.example.thenamegame;
+package com.example.TaskFailedNameGame;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import com.example.thenamegame.Retro.RetroQuestionRunner;
-import com.example.thenamegame.Retro.RetroRunnable;
+import com.example.TaskFailedNameGame.Retro.RetroDataRunner;
+import com.example.TaskFailedNameGame.Retro.RetroQuestionRunner;
 
 /**
  * @author Ian
@@ -19,15 +19,17 @@ public class MainMenuActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+        getSupportActionBar().hide();
 
-        // Main menu title type writer
-        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_title);
+        // Type writer
+        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_mainMenu);
         tw.setText("");
         tw.setCharacterDelay(400);
         tw.animateText("THE NAME GAME.");
 
-        RetroQuestionRunner retroQuestionRunner = RetroQuestionRunner.getOneNameInstance();
-        retroQuestionRunner.start();
+        // starts all retro runners
+        RetroQuestionRunner.getOneNameInstance(0).start();
+        RetroQuestionRunner.getOneYearInstance(0).start();
     }
 
 

@@ -1,28 +1,31 @@
-package com.example.thenamegame.Retro;
+package com.example.TaskFailedNameGame.Retro;
 
 import android.util.Log;
 
 import com.google.gson.JsonObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class oneNameMultipleYearsRetro extends RetroRunnable{
+public class RandomNamesRetro extends RetroDataRunnable {
 
-    public oneNameMultipleYearsRetro(){
-        super(10);
+    public RandomNamesRetro(){
+        super(10, "names");
     }
 
     @Override
-    protected void getQuestionFromDataBase() {
-        Call<JsonObject> call = retroInterface.getOneNameMultipleYears();
+    protected void getDataFromDataBase() {
+        Call<JsonObject> call = retroInterface.getRandomName();
         call.enqueue(new Callback<JsonObject>() {
             @Override
             public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
                 Log.d("RetroRunnable GETALL", response.body().toString());
                 //System.out.println(response.body().toString());
-                fillLists(response.body());
+                addStringToQueue(response.body().get("name").getAsString());
             } //ends overiddden method
 
             @Override

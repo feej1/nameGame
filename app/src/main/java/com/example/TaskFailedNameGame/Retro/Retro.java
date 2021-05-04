@@ -1,4 +1,4 @@
-package com.example.thenamegame.Retro;
+package com.example.TaskFailedNameGame.Retro;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -12,7 +12,6 @@ import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
 
 public interface Retro {
 
@@ -21,37 +20,37 @@ public interface Retro {
     Call<JsonObject> getOneNameMultipleYears();
 
     //gets a year, the correct name, and 4 other random names
-    @GET("getOneYearMultipleNames")
+    @GET("getNameQuestions")
     Call<JsonObject> getOneYearMultipleNames();
 
-    /*
-    Example from TechPrep
-     */
-//    @GET("getAllSubmissions")
-//    Call<JsonArray> getSubmissions();
+    @GET("getRandomName")
+    Call<JsonObject> getRandomName();
+
+    @GET("GetLeaderboard")
+    Call<JsonArray> getLeading();
+
+    //user String
+    //questionsAnswered Int
+    @Headers({"Content-Type: application/json"})
+    @POST("updateLeaderBoard")
+    Call<JsonObject> updateLeaderBoard(@Body JsonObject object);
+
+//    @GET("getOneStar")
+//    Call<JsonObject> getOneStar();
 //
-//    @Headers({"Content-Type: application/json"})
-//    @POST("sendAdminResponse")
-//    Call<JsonObject> sendResponse(@Body JsonObject object);
+//    @GET("getTwoStar")
+//    Call<JsonObject> getTwoStar();
 //
-//    @GET("getTechnical")
-//    Call<JsonObject> getTechnical();
+//    @GET("getThreeStar")
+//    Call<JsonObject> getThreeStar();
 //
-//    @GET("getFlash")
-//    Call<JsonObject> getFlash();
+//    @GET("getFourStar")
+//    Call<JsonObject> getFourStar();
 //
-//    @Headers({"Content-Type: application/json"})
-//    @POST("createFlashAPI")
-//    Call<JsonObject> createFlash(@Body JsonObject object);
-//
-//
-//    @Headers({"Content-Type: application/json"})
-//    @POST("createTechAPI")
-//    Call<JsonObject> createTech(@Body JsonObject object);
-//
-//    @GET("getUser")
-//    Call<JsonObject> getUser(@Query("email") String email);
-//
+//    @GET("getFiveStar")
+//    Call<JsonObject> getFiveStar();
+
+
 //    @Headers({"Content-Type: application/json"})
 //    @POST("RankFlashAdmin")
 //    Call<JsonObject> RankFlashAdmin(@Body JsonObject object);
