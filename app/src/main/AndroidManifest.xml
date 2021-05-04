@@ -18,7 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".FormTypeActivity"/>
-        <activity android:name="com.example.TaskFailedNameGame.GoogleLoginActivity"/>
         <activity android:name="com.example.TaskFailedNameGame.LeaderBoardActivity"/>
         <activity android:name="com.example.TaskFailedNameGame.NameGameActivity"/>
         <activity android:name="com.example.TaskFailedNameGame.UserResultActivity"/>
