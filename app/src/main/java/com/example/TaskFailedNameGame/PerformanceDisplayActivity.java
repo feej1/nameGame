@@ -62,9 +62,9 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
 
     private void populateQuestions() {
 
-        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_performance);
-        tw.setText("");
-        tw.setCharacterDelay(100);
+//        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_performance);
+//        tw.setText("");
+//        tw.setCharacterDelay(100);
 //        if (questionSet.getNumCorrect() < 4) {
 //            tw.animateText("Good try!");
 //        } else if (questionSet.getNumCorrect() < 8) {

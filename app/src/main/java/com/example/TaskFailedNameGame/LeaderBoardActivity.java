@@ -44,7 +44,13 @@ public class LeaderBoardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_leaderboard);
         topUsersAndScores = new ArrayList<>();
         loadTask = new Asynch();
+        getSupportActionBar().hide();
 
+        // Type writer
+        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_leaderboardTitle);
+        tw.setText("");
+        tw.setCharacterDelay(150);
+        tw.animateText("LEADERBOARD");
     }
 
 
