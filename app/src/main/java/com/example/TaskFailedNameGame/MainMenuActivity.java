@@ -120,8 +120,8 @@ public class MainMenuActivity extends AppCompatActivity {
     }
 
     public static String getDisplayName(){
-        if(signedInUser != null){
-            return signedInUser.getDisplayName();
+        if(account != null){
+            return account.getDisplayName();
         }
         return null;
     }
