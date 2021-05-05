@@ -62,31 +62,31 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
 
     private void populateQuestions() {
 
-        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_performance);
-        tw.setText("");
-        tw.setCharacterDelay(100);
-        if (questionSet.getNumCorrect() < 4) {
-            tw.animateText("Oof...");
-        } else if (questionSet.getNumCorrect() < 8) {
-            tw.animateText("Nice job!");
-        } else {
-            tw.animateText("Outstanding!");
-        }
+//        final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_performance);
+//        tw.setText("");
+//        tw.setCharacterDelay(100);
+//        if (questionSet.getNumCorrect() < 4) {
+//            tw.animateText("Good try!");
+//        } else if (questionSet.getNumCorrect() < 8) {
+//            tw.animateText("Nice job!");
+//        } else {
+//            tw.animateText("Outstanding!");
+//        }
 
         final TypeWriter tw2 = (TypeWriter) findViewById(R.id.typeWriter_percent);
         tw2.setText("");
-        tw2.setCharacterDelay(400);
-        tw2.animateText(questionSet.getNumCorrect() + " / 10");
+        tw2.setCharacterDelay(200);
+        tw2.animateText("SCORE:  " + questionSet.getNumCorrect() + " / 10");
 
         Log.d("Performance", "number of q's: " + questionSet.getNumberOfQuestions());
 
         for (int i = 0; i < 10; i++) {
             Question question = questionSet.getQuestion(i);
             if (question.isCorrect()) {
-                performanceViews.get(i).setText("Correct\n\n" + question.getQuestion() + "\n\nYou Answered: " + question.getChosenAnswer());
+                performanceViews.get(i).setText((i + 1) + ". " + question.getQuestion() + "\n\nYou Answered: " + question.getChosenAnswer());
             } else {
                 performanceViews.get(i).setBackgroundColor(Color.parseColor("#E87066"));
-                performanceViews.get(i).setText("Incorrect\n\n" + question.getQuestion() + "\n\nCorrect Answer: " + question.getAnswer() + "\nYou Answered: " + question.getChosenAnswer());
+                performanceViews.get(i).setText((i + 1) + ". " + question.getQuestion() + "\n\nCorrect Answer: " + question.getAnswer() + "\nYou Answered: " + question.getChosenAnswer());
             }
         }
     }
@@ -95,13 +95,13 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
     public void performDisplayClicked(View view) {
     }
 
-    public void playAgainClicked(View view){
+    public void playAgainClicked(View view) {
         sendDataToDB();
         Intent intent = new Intent(this, FormTypeActivity.class);
         startActivity(intent);
     }
 
-    public void mainMenuClicked(View view){
+    public void mainMenuClicked(View view) {
         sendDataToDB();
         Intent intent = new Intent(this, MainMenuActivity.class);
         startActivity(intent);
