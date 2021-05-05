@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.TaskFailedNameGame.Retro.RetroDataRunner;
 import com.example.TaskFailedNameGame.Retro.RetroQuestionRunner;
@@ -29,12 +31,20 @@ public class MainMenuActivity extends AppCompatActivity {
     GoogleSignInClient mGoogleSignInClient;
     private static GoogleSignInAccount account;
 
+    private TextView signInText;
+    private boolean loggedIn;
+    private Button googleButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
         getSupportActionBar().hide();
         account = null;
+
+        signInText = (TextView) findViewById(R.id.googleSignInText);
+        googleButton = (Button) findViewById(R.id.googleButton);
+
         // Type writer
         final TypeWriter tw = (TypeWriter) findViewById(R.id.typeWriter_mainMenu);
         tw.setText("");
@@ -48,7 +58,7 @@ public class MainMenuActivity extends AppCompatActivity {
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken("484220769255-eqreisk19guhm0bjasg8ks2adcarscfn.apps.googleusercontent.com")
+//                .requestIdToken("484220769255-eqreisk19guhm0bjasg8ks2adcarscfn.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
 
@@ -64,16 +74,24 @@ public class MainMenuActivity extends AppCompatActivity {
         account = GoogleSignIn.getLastSignedInAccount(this);
 
         // add a box that shows that we are signed in
-        if(account == null){
-            // button would be enabled
+        if (account == null) {
+            signInText.setText("");
+            googleButton.setText("Sign in with Google");
+            loggedIn = false;
         } else {
-
+            signInText.setText("Signed in as — " + account.getDisplayName());
+            googleButton.setText("SIGN OUT");
+            loggedIn = true;
         }
     }
 
     // Click event handler for the google login button
     public void googleOnclick(View v) {
-        signIn();
+        if (loggedIn)
+            signOut();
+        else {
+            signIn();
+        }
     }
 
     private void signIn() {
@@ -100,7 +118,11 @@ public class MainMenuActivity extends AppCompatActivity {
 
             // Signed in successfully, show authenticated UI.
             Log.d("googleSignIn", account.getDisplayName() + " logged in successfully");
-            // HERE WOULD BE WHERE YOU WOULD CHANGE UI IF USER LOGGED IN SUCCESSFULLY
+
+            // Handle log in UI
+            signInText.setText("Signed in as — " + account.getDisplayName());
+            googleButton.setText("SIGN OUT");
+            loggedIn = true;
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -119,8 +141,8 @@ public class MainMenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public static String getDisplayName(){
-        if(account != null){
+    public static String getDisplayName() {
+        if (account != null) {
             return account.getDisplayName();
         }
         return null;
@@ -135,8 +157,12 @@ public class MainMenuActivity extends AppCompatActivity {
                 .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(Task<Void> task) {
-                        // can add anything here that would happen when you
-                        // sign out
+                        Log.d("googleSignIn", "Log out successful");
+
+                        // Handle log out UI
+                        signInText.setText("");
+                        googleButton.setText("Sign in with Google");
+                        loggedIn = false;
                     }
                 });
     }

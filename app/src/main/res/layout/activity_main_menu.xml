@@ -62,6 +62,22 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <TextView
+        android:id="@+id/googleSignInText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:textAllCaps="true"
+        android:textColor="#6BB86E"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <Button
         android:id="@+id/googleButton"
         android:layout_width="0dp"
@@ -72,7 +88,7 @@
         android:onClick="googleOnclick"
         android:text="Login with Google"
         android:textAllCaps="false"
-        app:backgroundTint="#E87066"
+        app:backgroundTint="#6BB86E"
         app:layout_constraintBottom_toTopOf="@+id/copyrightText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
