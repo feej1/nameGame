@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.Button;
-import android.widget.RatingBar.OnRatingBarChangeListener;
 
 /**
  * THis menu lets the user decide what to play challenge/nameGame/Stars
@@ -25,11 +24,12 @@ public class FormTypeActivity extends AppCompatActivity {
     boolean click = false;
     boolean form1buttonispressed = false;
     public float difficulty = 0;
+    int minDifficulty = 0;
+    int maxDifficulty = 5;
     RatingBar starDifficulty;
 
     private Button form1button;
     private Button form2button;
-    private Button mixformbutton;
     private Button singleplayerButton;
     private Button multiplayerButton;
     private Button launchGameButton;
@@ -42,9 +42,6 @@ public class FormTypeActivity extends AppCompatActivity {
 
         form1button = (Button) findViewById(R.id.form1button);
         form2button = (Button) findViewById(R.id.form2button);
-        mixformbutton = (Button) findViewById(R.id.mixformbutton);
-        singleplayerButton = (Button) findViewById(R.id.singleplayerButton);
-        multiplayerButton = (Button) findViewById(R.id.multiplayerButton);
         launchGameButton = (Button) findViewById(R.id.launchGameButton);
         shuffleButton = (ImageButton) findViewById(R.id.shuffleDifficultyButton);
 
@@ -64,7 +61,6 @@ public class FormTypeActivity extends AppCompatActivity {
         starDifficulty.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override
             public void onRatingChanged(RatingBar stars, float v, boolean fromUser) {
-
                 difficulty = (int) v;
                 difficulty = stars.getRating();
 
@@ -122,10 +118,12 @@ public class FormTypeActivity extends AppCompatActivity {
         if (form1buttonispressed) {
             Intent intent = new Intent(this, NameGameActivity.class);
             intent.putExtra("FormType", 1);
+            intent.putExtra("Difficulty", difficulty);
             startActivity(intent);
         } else {
             Intent intent = new Intent(this, NameGameActivity.class);
             intent.putExtra("FormType", 2);
+            intent.putExtra("Difficulty", difficulty);
             startActivity(intent);
         }
     }
@@ -133,10 +131,8 @@ public class FormTypeActivity extends AppCompatActivity {
     public void setUpForm1(View view) {
         form1button.setClickable(false);
         form2button.setClickable(true);
-        mixformbutton.setClickable(true);
         form1button.setBackgroundColor(Color.parseColor("#135a91"));
         form2button.setBackgroundColor(Color.parseColor("#2196F3"));
-        mixformbutton.setBackgroundColor(Color.parseColor("#2196F3"));
         if (difficulty >= 1) {
             setPlayButtonEnabled(true);
         }
@@ -147,39 +143,13 @@ public class FormTypeActivity extends AppCompatActivity {
     public void setUpForm2(View view) {
         form1button.setClickable(true);
         form2button.setClickable(false);
-        mixformbutton.setClickable(true);
         form1button.setBackgroundColor(Color.parseColor("#2196F3"));
         form2button.setBackgroundColor(Color.parseColor("#135a91"));
-        mixformbutton.setBackgroundColor(Color.parseColor("#2196F3"));
         if (difficulty >= 1) {
             setPlayButtonEnabled(true);
         }
         click = true;
         form1buttonispressed = false;
-    }
-
-    public void setUpMixedForm(View view) {
-        form1button.setClickable(true);
-        form2button.setClickable(true);
-        mixformbutton.setClickable(false);
-        form1button.setBackgroundColor(Color.parseColor("#2196F3"));
-        form2button.setBackgroundColor(Color.parseColor("#2196F3"));
-        mixformbutton.setBackgroundColor(Color.parseColor("#135a91"));
-    }
-
-    public void setUpMultiplayerButton(View view) {
-        singleplayerButton.setClickable(true);
-        multiplayerButton.setClickable(false);
-        multiplayerButton.setBackgroundColor(Color.parseColor("#135a91"));
-        singleplayerButton.setBackgroundColor(Color.parseColor("#2196F3"));
-
-    }
-
-    public void setUpSingleplayerButton(View view) {
-        singleplayerButton.setClickable(false);
-        multiplayerButton.setClickable(true);
-        singleplayerButton.setBackgroundColor(Color.parseColor("#135a91"));
-        multiplayerButton.setBackgroundColor(Color.parseColor("#2196F3"));
     }
 
     public void shuffleButtonPressed(View view) {
