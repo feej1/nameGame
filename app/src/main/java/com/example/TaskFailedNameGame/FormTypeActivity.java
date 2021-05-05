@@ -21,12 +21,13 @@ public class FormTypeActivity extends AppCompatActivity {
 
     //Beginning work on 5 stars
 
-    boolean click = false;
     boolean form1buttonispressed = false;
     public float difficulty = 0;
     int minDifficulty = 0;
     int maxDifficulty = 5;
     RatingBar starDifficulty;
+    private boolean typeSelected = false;
+    private boolean difficultySelected = false;
 
     private Button form1button;
     private Button form2button;
@@ -66,41 +67,9 @@ public class FormTypeActivity extends AppCompatActivity {
 
                 shuffleButton.setColorFilter(Color.parseColor("#ffffff"));
 
-                switch ((int) difficulty) {
-                    case 0:
-                        setPlayButtonEnabled(false);
-                        difficulty = 1;
-                    case 1:
-                        difficulty = 1;
-                        if (click) {
-                            setPlayButtonEnabled(true);
-                        }
-                        break;
-                    case 2:
-                        difficulty = 2;
-                        if (click) {
-                            setPlayButtonEnabled(true);
-                        }
-                        break;
-                    case 3:
-                        difficulty = 3;
-                        if (click) {
-                            setPlayButtonEnabled(true);
-                        }
-                        break;
-                    case 4:
-                        difficulty = 4;
-                        if (click) {
-                            setPlayButtonEnabled(true);
-                        }
-                        break;
-                    case 5:
-                        difficulty = 5;
-                        if (click) {
-                            setPlayButtonEnabled(true);
-                        }
-                        break;
-                }
+                // handle play button enable
+                difficultySelected = true;
+                if (typeSelected) setPlayButtonEnabled(true);
             }
         });
 
@@ -133,11 +102,12 @@ public class FormTypeActivity extends AppCompatActivity {
         form2button.setClickable(true);
         form1button.setBackgroundColor(Color.parseColor("#135a91"));
         form2button.setBackgroundColor(Color.parseColor("#2196F3"));
-        if (difficulty >= 1) {
-            setPlayButtonEnabled(true);
-        }
-        click = true;
+
         form1buttonispressed = true;
+
+        // handle play button enable
+        typeSelected = true;
+        if (difficultySelected) setPlayButtonEnabled(true);
     }
 
     public void setUpForm2(View view) {
@@ -145,16 +115,19 @@ public class FormTypeActivity extends AppCompatActivity {
         form2button.setClickable(false);
         form1button.setBackgroundColor(Color.parseColor("#2196F3"));
         form2button.setBackgroundColor(Color.parseColor("#135a91"));
-        if (difficulty >= 1) {
-            setPlayButtonEnabled(true);
-        }
-        click = true;
         form1buttonispressed = false;
+
+        // handle play button enable
+        typeSelected = true;
+        if (difficultySelected) setPlayButtonEnabled(true);
     }
 
     public void shuffleButtonPressed(View view) {
         starDifficulty.setRating(0);
         shuffleButton.setColorFilter(Color.parseColor("#04DAC5"));
-        setPlayButtonEnabled(true);
+
+        // handle play button enable
+        difficultySelected = true;
+        if (typeSelected) setPlayButtonEnabled(true);
     }
 }
