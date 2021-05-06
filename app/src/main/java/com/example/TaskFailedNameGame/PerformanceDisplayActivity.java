@@ -97,7 +97,7 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
 
     public void playAgainClicked(View view){
         sendDataToDB();
-        Intent intent = new Intent(this, FormTypeActivity.class);
+        Intent intent = new Intent(this, NameGameActivity.class);
         startActivity(intent);
     }
 

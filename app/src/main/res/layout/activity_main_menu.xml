@@ -6,24 +6,47 @@
     android:layout_height="match_parent"
     tools:context=".MainMenuActivity">
 
+    <Button
+        android:id="@+id/form2button"
+        android:layout_width="177dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="128dp"
+        android:onClick="setUpForm2"
+        android:text="Guess the name"
+        app:layout_constraintBottom_toTopOf="@+id/leaderboardButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeWriter_mainMenu"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/form1button"
+        android:layout_width="164dp"
+        android:layout_height="53dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginBottom="128dp"
+        android:onClick="setUpForm1"
+        android:text="Guess the year"
+        app:layout_constraintBottom_toTopOf="@+id/leaderboardButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/typeWriter_mainMenu"
+        app:layout_constraintVertical_bias="1.0" />
+
     <com.example.TaskFailedNameGame.TypeWriter
         android:id="@+id/typeWriter_mainMenu"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginTop="112dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
         android:fontFamily="@font/special_elite"
-        android:textSize="40sp"
         android:gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/playButton"
+        android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.568" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/welcomeText"
@@ -85,30 +108,12 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="36dp"
         android:onClick="switchToLeaderBoard"
         android:text="LEADERBOARD"
         app:backgroundTint="#2196F3"
         app:layout_constraintBottom_toTopOf="@+id/googleButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/playButton"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="switchToFormType"
-        android:text="BEGIN"
-        app:layout_constraintBottom_toTopOf="@+id/leaderboardButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
