@@ -69,6 +69,7 @@ public class FormTypeActivity extends AppCompatActivity {
         form2button.setClickable(true);
         form1button.setBackgroundColor(Color.parseColor("#135a91"));
         form2button.setBackgroundColor(Color.parseColor("#2196F3"));
+        form1buttonispressed = true;
         setPlayButtonEnabled(true);
     }
 
