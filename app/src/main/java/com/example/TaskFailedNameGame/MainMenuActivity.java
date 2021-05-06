@@ -3,6 +3,7 @@ package com.example.TaskFailedNameGame;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -77,10 +78,12 @@ public class MainMenuActivity extends AppCompatActivity {
         if (account == null) {
             signInText.setText("");
             googleButton.setText("Sign in with Google");
+            googleButton.setBackgroundColor(Color.parseColor("#6BB86E"));
             loggedIn = false;
         } else {
             signInText.setText("Signed in as — " + account.getDisplayName());
             googleButton.setText("SIGN OUT");
+            googleButton.setBackgroundColor(Color.parseColor("#E87066"));
             loggedIn = true;
         }
     }
@@ -122,6 +125,7 @@ public class MainMenuActivity extends AppCompatActivity {
             // Handle log in UI
             signInText.setText("Signed in as — " + account.getDisplayName());
             googleButton.setText("SIGN OUT");
+            googleButton.setBackgroundColor(Color.parseColor("#E87066"));
             loggedIn = true;
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
@@ -162,6 +166,7 @@ public class MainMenuActivity extends AppCompatActivity {
                         // Handle log out UI
                         signInText.setText("");
                         googleButton.setText("Sign in with Google");
+                        googleButton.setBackgroundColor(Color.parseColor("#6BB86E"));
                         loggedIn = false;
                     }
                 });
