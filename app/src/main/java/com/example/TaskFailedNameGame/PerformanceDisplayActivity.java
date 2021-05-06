@@ -111,7 +111,7 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
         String displayName = MainMenuActivity.getDisplayName();
         if(!sendingData && !dataSent && displayName != null) {
             Retro retroInterface = Retro.retro.create(Retro.class);
-
+            Log.d("Performance: ", "if statement:" + !sendingData + " " + !dataSent + " " + (displayName!= null));
             try {
                 sendingData = true;
                 JsonObject payload = new JsonObject();
@@ -136,6 +136,8 @@ public class PerformanceDisplayActivity extends AppCompatActivity {
             } catch (Exception e) {
 
             }
+        }else{
+            Log.d("Performance: ", "if statement:" + !sendingData + " " + !dataSent + " " + (displayName!= null));
         }
     }
 }
