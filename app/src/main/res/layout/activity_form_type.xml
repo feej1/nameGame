@@ -34,7 +34,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
-        android:text="Decide your game mode and then select a specific difficulty or play on all difficulties with the stars or shuffle button respectively!"
+        android:text="To begin, select a game mode and then press the play button!"
         android:textColor="@android:color/darker_gray"
         android:textSize="14sp"
         android:textStyle="bold"
@@ -42,81 +42,73 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/typeWriter_formType" />
 
-    <RatingBar
-        android:id="@+id/stars"
-        android:layout_width="242dp"
-        android:layout_height="57dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:stepSize="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.623" />
-
-    <Button
-        android:id="@+id/form1button"
+    <TextView
+        android:id="@+id/formType_secondaryText2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="16dp"
-        android:onClick="setUpForm1"
-        android:text="Guess the year"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Select from a list of years and guess when the name was most common!"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/form1button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/formType_secondaryText3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:text="Select from a list of names and guess which name was most popular in the given year!"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="14sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/form2button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/form2button"
+        android:id="@+id/form1button"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="125dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:onClick="setUpForm2"
-        android:text="Guess the name"
+        android:fontFamily="@font/special_elite"
+        android:onClick="setUpForm1"
+        android:text="Guess the year"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        app:layout_constraintVertical_bias="0.405" />
 
-    <TextView
-        android:id="@+id/formType_or"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <Button
+        android:id="@+id/form2button"
+        android:layout_width="0dp"
+        android:layout_height="125dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="SHUFFLE DIFFICULTIES"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/shuffleDifficultyButton"
+        android:fontFamily="@font/special_elite"
+        android:onClick="setUpForm2"
+        android:text="Guess the name"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/formType_or3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="8dp"
-        android:gravity="center"
-        android:text="SELECT DIFFICULTY"
-        android:textColor="@android:color/darker_gray"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/stars"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.78" />
 
     <Button
         android:id="@+id/launchGameButton"
@@ -132,20 +124,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/shuffleDifficultyButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:onClick="shuffleButtonPressed"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.808"
-        app:srcCompat="@android:drawable/ic_popup_sync" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

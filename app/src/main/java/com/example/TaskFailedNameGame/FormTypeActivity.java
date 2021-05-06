@@ -19,22 +19,10 @@ public class FormTypeActivity extends AppCompatActivity {
     //I think there should be 2 buttons (or a slider?) for which Form a user wants to do,
     //in addition this should let the user select how many stars, and if the nameGame is multiplayer
 
-    //Beginning work on 5 stars
-
     boolean form1buttonispressed = false;
-    public float difficulty = 0;
-    int minDifficulty = 0;
-    int maxDifficulty = 5;
-    RatingBar starDifficulty;
-    private boolean typeSelected = false;
-    private boolean difficultySelected = false;
-
     private Button form1button;
     private Button form2button;
-    private Button singleplayerButton;
-    private Button multiplayerButton;
     private Button launchGameButton;
-    private ImageButton shuffleButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +32,7 @@ public class FormTypeActivity extends AppCompatActivity {
         form1button = (Button) findViewById(R.id.form1button);
         form2button = (Button) findViewById(R.id.form2button);
         launchGameButton = (Button) findViewById(R.id.launchGameButton);
-        shuffleButton = (ImageButton) findViewById(R.id.shuffleDifficultyButton);
 
-        shuffleButton.setColorFilter(Color.parseColor("#ffffff"));
-
-        starDifficulty = findViewById(R.id.stars);
         getSupportActionBar().hide();
 
         setPlayButtonEnabled(false);
@@ -58,21 +42,6 @@ public class FormTypeActivity extends AppCompatActivity {
         tw.setText("");
         tw.setCharacterDelay(150);
         tw.animateText("CONFIGURE MATCH!");
-
-        starDifficulty.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
-            @Override
-            public void onRatingChanged(RatingBar stars, float v, boolean fromUser) {
-                difficulty = (int) v;
-                difficulty = stars.getRating();
-
-                shuffleButton.setColorFilter(Color.parseColor("#ffffff"));
-
-                // handle play button enable
-                difficultySelected = true;
-                if (typeSelected) setPlayButtonEnabled(true);
-            }
-        });
-
     }
 
     public void setPlayButtonEnabled(boolean enabled) {
@@ -87,12 +56,10 @@ public class FormTypeActivity extends AppCompatActivity {
         if (form1buttonispressed) {
             Intent intent = new Intent(this, NameGameActivity.class);
             intent.putExtra("FormType", 1);
-            intent.putExtra("Difficulty", difficulty);
             startActivity(intent);
         } else {
             Intent intent = new Intent(this, NameGameActivity.class);
             intent.putExtra("FormType", 2);
-            intent.putExtra("Difficulty", difficulty);
             startActivity(intent);
         }
     }
@@ -102,12 +69,7 @@ public class FormTypeActivity extends AppCompatActivity {
         form2button.setClickable(true);
         form1button.setBackgroundColor(Color.parseColor("#135a91"));
         form2button.setBackgroundColor(Color.parseColor("#2196F3"));
-
-        form1buttonispressed = true;
-
-        // handle play button enable
-        typeSelected = true;
-        if (difficultySelected) setPlayButtonEnabled(true);
+        setPlayButtonEnabled(true);
     }
 
     public void setUpForm2(View view) {
@@ -116,18 +78,6 @@ public class FormTypeActivity extends AppCompatActivity {
         form1button.setBackgroundColor(Color.parseColor("#2196F3"));
         form2button.setBackgroundColor(Color.parseColor("#135a91"));
         form1buttonispressed = false;
-
-        // handle play button enable
-        typeSelected = true;
-        if (difficultySelected) setPlayButtonEnabled(true);
-    }
-
-    public void shuffleButtonPressed(View view) {
-        starDifficulty.setRating(0);
-        shuffleButton.setColorFilter(Color.parseColor("#04DAC5"));
-
-        // handle play button enable
-        difficultySelected = true;
-        if (typeSelected) setPlayButtonEnabled(true);
+        setPlayButtonEnabled(true);
     }
 }
